@@ -23,10 +23,9 @@ public class Student extends Person {
 */
 
     public Student() {
-
     }
 
-    public Student(Long id, String name) {
+    public Student(long id, String name) {
         super(id, name);
     }
 
