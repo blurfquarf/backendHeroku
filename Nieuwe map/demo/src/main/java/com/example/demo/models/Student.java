@@ -35,11 +35,11 @@ public class Student extends Person {
 
 
     public long getId() {
-        return id;
+        return super.getId();
     }
 
     public void setId(long id) {
-        this.id = id;
+        super.setId(id);
     }
 
     public String getName() {
@@ -53,8 +53,8 @@ public class Student extends Person {
     @Override
     public String toString() {
         return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "id=" + super.getId() +
+                ", name='" + super.getName() + '\'' +
                 '}';
     }
 }
