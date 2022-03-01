@@ -38,6 +38,10 @@ public class Subject {
         this.description = description;
     }
 
+    public Subject() {
+
+    }
+
     public Long getId() {
         return id;
     }

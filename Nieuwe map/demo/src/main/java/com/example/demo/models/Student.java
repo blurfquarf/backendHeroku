@@ -7,7 +7,9 @@ import javax.persistence.*;
 @Entity
 @Table
 @CrossOrigin(origins = "http://localhost:3000")
-public class Student {
+public class Student extends Person {
+
+/*
     @Id
     @SequenceGenerator(
             name = "student_sequence",
@@ -18,21 +20,18 @@ public class Student {
             strategy = GenerationType.SEQUENCE,
             generator = "student_sequence"
     )
-
-    private Long id;
-    private String name;
+*/
 
     public Student() {
 
     }
 
     public Student(Long id, String name) {
-        this.id = id;
-        this.name = name;
+        super(id, name);
     }
 
     public Student(String name) {
-        this.name = name;
+        super(name);
     }
 
 
@@ -45,11 +44,11 @@ public class Student {
     }
 
     public String getName() {
-        return name;
+        return super.getName();
     }
 
     public void setName(String name) {
-        this.name = name;
+        super.setName(name);
     }
 
     @Override
