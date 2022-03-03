@@ -20,7 +20,7 @@ public class CoordinatorConfig {
 
             Coordinator diedriek = new Coordinator("Diedriek");
 
-            Coordinator francis = new Coordinator("Francic");
+            Coordinator francis = new Coordinator("Francis");
 
             repository.saveAll(
                     List.of(henk, diedriek, francis)

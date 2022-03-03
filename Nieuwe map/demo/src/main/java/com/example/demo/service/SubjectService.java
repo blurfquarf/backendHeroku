@@ -32,7 +32,7 @@ public class SubjectService {
     public void deleteSubject(Long studentId) {
         boolean exists = subjectRepository.existsById(studentId);
         if(!exists){
-            throw new IllegalStateException("student with id " + studentId +
+            throw new IllegalStateException("subject with id " + studentId +
                     " does not exist");
         }
         subjectRepository.deleteById(studentId);

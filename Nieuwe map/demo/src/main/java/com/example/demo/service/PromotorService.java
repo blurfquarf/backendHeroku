@@ -32,7 +32,7 @@ public class PromotorService {
     public void deletePromotor(Long promotorId) {
         boolean exists = promotorRepository.existsById(promotorId);
         if(!exists){
-            throw new IllegalStateException("student with id " + promotorId +
+            throw new IllegalStateException("promotor with id " + promotorId +
                     " does not exist");
         }
         promotorRepository.deleteById(promotorId);

@@ -33,12 +33,9 @@ public class Student extends Person {
         super(name);
     }
 
-
     public long getId() {
         return super.getId();
     }
-
-
 
     public void setId(long id) {
         super.setId(id);
