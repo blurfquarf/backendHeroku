@@ -9,18 +9,15 @@ import javax.persistence.*;
 @CrossOrigin(origins = "http://localhost:3000")
 public class Student extends Person {
 
-/*
-    @Id
-    @SequenceGenerator(
-            name = "student_sequence",
-            sequenceName = "student_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "student_sequence"
-    )
-*/
+
+
+    @ManyToOne
+    @JoinColumn(name = "subject_id")
+    private Subject subject;
+
+    public Subject getSubject() {
+        return subject;
+    }
 
     public Student() {
     }
@@ -55,5 +52,25 @@ public class Student extends Person {
                 "id=" + super.getId() +
                 ", name='" + super.getName() + '\'' +
                 '}';
+    }
+    //documentatie analoog aan setStudent in Subject.java
+    public void setSubject(Subject s){
+        if (subject!=s){
+
+            if (subject==null){
+                subject=s;
+                s.setStudent(this);
+            }
+            else if (s==null){
+                Subject tmpSubject = subject;
+                subject = null;
+                tmpSubject.setStudent(null);
+            }
+            /*else {
+                subject.setStudent(null);
+                s.setStudent(null);
+                setSubject(s);
+            }*/
+        }
     }
 }

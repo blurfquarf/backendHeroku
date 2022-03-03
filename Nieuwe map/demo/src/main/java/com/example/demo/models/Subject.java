@@ -3,6 +3,7 @@ package com.example.demo.models;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.*;
+import java.util.*;
 
 @Entity
 @Table
@@ -22,6 +23,13 @@ public class Subject {
     private Long id;
     private String name;
     private String description;
+
+    @OneToMany(mappedBy = "subject")
+    private List<Student> student;
+
+    public List<Student> getStudents() {
+        return student;
+    }
 
     public Subject(String n) {
         name = n;
@@ -70,5 +78,31 @@ public class Subject {
                 "id=" + id +
                 ", name=" + name + ", description" + '\'' +
                 '}';
+    }
+    public void setStudent(Student s){
+        if (!student.contains(s)){
+            //is er nog plaats voor deze student?
+            if (student.isEmpty()||student.size()==1){
+                student.add(s);
+                s.setSubject(this);
+            }
+            //kunnen we gebruiken om met een commando de link tussen subject en studenten
+            // te verwijderen ipv aparte methode
+            else if (s==null){
+                List<Student> tmpStudent = student;
+                student = null;
+                ListIterator<Student> itr = tmpStudent.listIterator();
+                while(itr.hasNext()) itr.next().setSubject(null);
+            }
+            /*else {
+                //methode zou de oude leerling overschrijven indien er toch inzitten,
+                //nog geen implementatie voor kunnen bedenken :p
+                //zou hier graag fout opwerpen, maar weet nog niet hoe
+                ListIterator<Student> itr = student.listIterator();
+                while(itr.hasNext()) itr.next().setSubject(null);
+                s.setSubject(null);
+                setStudent(s);
+            }*/
+        }
     }
 }

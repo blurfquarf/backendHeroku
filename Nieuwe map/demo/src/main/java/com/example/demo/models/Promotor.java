@@ -8,7 +8,6 @@ import javax.persistence.*;
 @CrossOrigin(origins = "http://localhost:3000")
 public class Promotor extends Person{
 
-
     public Promotor() {
     }
 
