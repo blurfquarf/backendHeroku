@@ -47,7 +47,7 @@ public class BedrijfsVerantwoordelijke extends Person{
     }
 
     public String getBedrijf() {
-        return  bedrijf;
+        return bedrijf;
     }
 
 

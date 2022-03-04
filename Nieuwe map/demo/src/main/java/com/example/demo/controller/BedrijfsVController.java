@@ -9,33 +9,34 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/coordinator")
-public class CoordinatorController {
+public class BedrijfsVController {
 
-    private final CoordinatorService coordinatorService;
+    private final BedrijfsVService bedrijfsVServiceService;
 
     @Autowired
-    public CoordinatorController(CoordinatorService cs){
-        this.coordinatorService = cs;
+    public BedrijfsVController(BedrijfsVService bs){
+        this.BedrijfsVService = bs;
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
-    public List<Coordinator> getCoordinators(){
-        return coordinatorService.getCoordinators();
+    public List<BedrijfsVerantwoordelijke> getBedrijfsV(){
+        return BedrijfsVService.getCoordinators();
     }
 
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping
-    public void registerNewCoordinator(@RequestBody Coordinator coordinator){
+    public void registerNewPromotor(@RequestBody Coordinator coordinator){
         coordinatorService.addNewCoordinator(coordinator);
     }
 
     @DeleteMapping("{coordinatorId}")
     @CrossOrigin(origins = "http://localhost:3000")
-    public void deleteCoordinator(@PathVariable("coordinatorId") Long coordinatorId){
+    public void deletePromotor(@PathVariable("coordinatorId") Long coordinatorId){
         coordinatorService.deleteCoordinator(coordinatorId);
     }
+
 
 
 }
