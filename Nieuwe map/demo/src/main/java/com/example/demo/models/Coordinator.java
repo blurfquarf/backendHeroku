@@ -11,6 +11,7 @@ public class Coordinator extends Person{
     public Coordinator(){
 
     }
+
     public Coordinator(String name){
         super(name);
     }
@@ -41,7 +42,7 @@ public class Coordinator extends Person{
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "Coordinator{" +
                 "id=" + super.getId() +
                 ", name='" + super.getName() + '\'' +
                 '}';

@@ -3,25 +3,27 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table
 @CrossOrigin(origins = "http://localhost:3000")
-public class Promotor extends Person{
+public class BedrijfsVerantwoordelijke extends Person{
+    public BedrijfsVerantwoordelijke(){
 
-    public Promotor() {
     }
 
-    public Promotor(String name) {
+    public BedrijfsVerantwoordelijke(String name){
         super(name);
     }
 
-    public Promotor(long id) {
+    public BedrijfsVerantwoordelijke(long id){
         super(id);
     }
 
-    public Promotor(long id, String name) {
+    public BedrijfsVerantwoordelijke(long id, String name){
         super(id, name);
     }
+
     public long getId() {
         return super.getId();
     }
@@ -40,9 +42,12 @@ public class Promotor extends Person{
 
     @Override
     public String toString() {
-        return "Promotor{" +
+        return "Bedrijfsverantwoordelijke{" +
                 "id=" + super.getId() +
                 ", name='" + super.getName() + '\'' +
                 '}';
     }
+
+
+
 }
