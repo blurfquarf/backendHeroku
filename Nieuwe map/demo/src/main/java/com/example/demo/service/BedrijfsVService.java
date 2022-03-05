@@ -15,17 +15,17 @@ public class BedrijfsVService {
 
     private final BedrijfsVRepository bedrijfsVRepository;
 
+
     @Autowired
     public BedrijfsVService(BedrijfsVRepository bedrijfsVRepository) {
         this.bedrijfsVRepository = bedrijfsVRepository;
     }
 
-    public List<Coordinator> getBedrijfsV(){
+    public List<BedrijfsVerantwoordelijke> getBedrijfsV(){
         return bedrijfsVRepository.findAll();
     }
 
-    public void addNewBedrijfsV(Coordinator coordinator) {
-        bedrijfsVRepository.save(coordinator);
+    public void addNewBedrijfsV(BedrijfsVerantwoordelijke BedrijfsV) {bedrijfsVRepository.save(BedrijfsV);
     }
 
 

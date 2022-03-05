@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository //hoe opgeslagen in databank
 public interface BedrijfsVRepository extends
-        JpaRepository<Coordinator, Long> {
+        JpaRepository<BedrijfsVerantwoordelijke, Long> {
 
 }
