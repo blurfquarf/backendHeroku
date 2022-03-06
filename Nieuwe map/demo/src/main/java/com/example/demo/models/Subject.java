@@ -31,6 +31,12 @@ public class Subject {
     @JoinColumn(name = "promotor_id")
     private Promotor promotor;
 
+    @ManyToOne
+    @JoinColumn(name = "bedrijfsV_id")
+    private BedrijfsVerantwoordelijke bedrijfsV;
+
+    public BedrijfsVerantwoordelijke getBedrijfsV() {return bedrijfsV;}
+
     public Promotor getPromotor() {
         return promotor;
     }
@@ -110,6 +116,45 @@ public class Subject {
                 while(itr.hasNext()) itr.next().setSubject(null);
                 s.setSubject(null);
                 setStudent(s);
+            }*/
+        }
+
+    }
+    public void setPromotor(Promotor p){
+        if (promotor!=p){
+
+            if (promotor==null){
+                promotor=p;
+                p.setSubject(this);
+            }
+            else if (p==null){
+                Promotor tmpPromotor = promotor;
+                promotor = null;
+                tmpPromotor.setSubject(null);
+            }
+            /*else {
+                promotor.setSubject(null);
+                s.setSubject(null);
+                setPromotor(s);
+            }*/
+        }
+    }
+    public void setBedrijfsV(BedrijfsVerantwoordelijke bv){
+        if (bedrijfsV!=bv){
+
+            if (bedrijfsV==null){
+                bedrijfsV=bv;
+                bv.setSubject(this);
+            }
+            else if (bv==null){
+                BedrijfsVerantwoordelijke tmpBedrijfsV = bedrijfsV;
+                bedrijfsV = null;
+                tmpBedrijfsV.setSubject(null);
+            }
+            /*else {
+                bedrijfsV.setSubject(null);
+                s.setBedrijfsV(null);
+                setBedrijfsV(s);
             }*/
         }
     }
