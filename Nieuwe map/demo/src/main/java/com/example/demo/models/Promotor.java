@@ -2,11 +2,15 @@ package com.example.demo.models;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
 @CrossOrigin(origins = "http://localhost:3000")
 public class Promotor extends Person{
+
+    @OneToMany(mappedBy = "promotor")
+    private List<Subject> subject;
 
     public Promotor() {
     }

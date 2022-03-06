@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v1/coordinator")
+@RequestMapping(path = "api/v1/bedrijfsverantwoordelijke")
 public class BedrijfsVController {
 
     private final BedrijfsVService bedrijfsVService;

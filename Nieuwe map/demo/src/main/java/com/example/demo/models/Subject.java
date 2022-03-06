@@ -27,6 +27,14 @@ public class Subject {
     @OneToMany(mappedBy = "subject")
     private List<Student> student;
 
+    @ManyToOne
+    @JoinColumn(name = "promotor_id")
+    private Promotor promotor;
+
+    public Promotor getPromotor() {
+        return promotor;
+    }
+
     public List<Student> getStudents() {
         return student;
     }

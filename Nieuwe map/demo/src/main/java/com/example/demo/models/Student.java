@@ -9,8 +9,6 @@ import javax.persistence.*;
 @CrossOrigin(origins = "http://localhost:3000")
 public class Student extends Person {
 
-
-
     @ManyToOne
     @JoinColumn(name = "subject_id")
     private Subject subject;

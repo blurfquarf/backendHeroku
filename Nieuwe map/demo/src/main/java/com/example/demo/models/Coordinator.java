@@ -47,5 +47,4 @@ public class Coordinator extends Person{
                 ", name='" + super.getName() + '\'' +
                 '}';
     }
-
 }
