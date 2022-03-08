@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v1/bedrijfsverantwoordelijke")
+@RequestMapping(path = "api/v1/bedrijfsV")
 public class BedrijfsVController {
 
     private final BedrijfsVService bedrijfsVService;
@@ -25,11 +25,18 @@ public class BedrijfsVController {
     }
 
 
+
+
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping
     public void registerNewBedrijfsV(@RequestBody BedrijfsVerantwoordelijke bedrijfsV){
         bedrijfsVService.addNewBedrijfsV(bedrijfsV);
     }
+
+
+
+
+
 
     @DeleteMapping("{bedrijfsVId}")
     @CrossOrigin(origins = "http://localhost:3000")

@@ -41,6 +41,7 @@ public class Subject {
         return promotor;
     }
 
+
     public List<Student> getStudents() {
         return student;
     }
@@ -61,7 +62,6 @@ public class Subject {
     }
 
     public Subject() {
-
     }
 
     public Long getId() {
@@ -86,6 +86,7 @@ public class Subject {
     public void setDescription(String description){
         this.description = description;
     }
+
     @Override
     public String toString() {
         return "Subject{" +
