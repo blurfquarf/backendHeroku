@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository //hoe opgeslagen in databank
-public interface PromotorRepository extends
-        JpaRepository<Promotor, Long> {
-
+public interface PersonRepository extends
+        JpaRepository<Person, Long> {
 }
