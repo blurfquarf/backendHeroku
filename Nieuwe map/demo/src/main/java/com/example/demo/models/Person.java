@@ -28,17 +28,19 @@ public class Person {
 
     }
 
-    public Person(String name) {
-        this.name = name;
+    /*
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
+    */
 
-    public Person(long id) {
-        this.id = id;
-    }
 
-    public Person(long id, String name) {
-        this.id = id;
-        this.name = name;
+    public Person(String firstName, String lastName, String email, String password){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
     }
 
     public long getId() {
@@ -57,6 +59,39 @@ public class Person {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(final String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(final String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(final String username) {
+        this.email = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(final String password) {
+        this.password = password;
+    }
+
 
     @Override
     public String toString() {

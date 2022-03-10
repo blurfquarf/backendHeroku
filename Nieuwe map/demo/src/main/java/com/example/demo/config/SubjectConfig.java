@@ -11,7 +11,7 @@ import java.util.List;
 public class SubjectConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner1(SubjectRepository repository){
+    CommandLineRunner commandLineRunner2(SubjectRepository repository){
         return args -> {
             Subject taartenBakken = new Subject("Taarten bakken");
 
