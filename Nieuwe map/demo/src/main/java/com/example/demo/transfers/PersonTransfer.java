@@ -84,6 +84,7 @@ public class PersonTransfer {
         this.matchingPassword = matchingPassword;
     }
 
+    /*
     public boolean isUsing2FA() {
         return isUsing2FA;
     }
@@ -91,7 +92,7 @@ public class PersonTransfer {
     public void setUsing2FA(boolean isUsing2FA) {
         this.isUsing2FA = isUsing2FA;
     }
-
+*/
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
@@ -101,8 +102,8 @@ public class PersonTransfer {
                 .append(lastName)
                 .append(", email=")
                 .append(email)
-                .append(", isUsing2FA=")
-                .append(isUsing2FA)
+                //.append(", isUsing2FA=")
+                //.append(isUsing2FA)
                 .append(", role=")
                 .append(role).append("]");
         return builder.toString();

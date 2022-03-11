@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.checks.EmailExists;
 import com.example.demo.models.*;
 import com.example.demo.repository.*;
 import com.example.demo.transfers.PersonTransfer;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.List;
 
 @Service
+@Transactional
 @CrossOrigin(origins = "http://localhost:3000")
 public class PersonService {
 
@@ -41,25 +43,35 @@ public class PersonService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private RoleRepository roleRepository;
 
 
-    //iedereen registreert eerst als default persoon en masterproefcoordinator kan dan role geven
-    @Override
-    public Person registerNewAccount(PersonTransfer accountDto) throws EmailExistsException {
+    //iedereen registreert eerst als default persoon en masterproefcoordinator kan dan role gevenl
+    //@Override
+    public Person registerNewAccount(PersonTransfer accountDto) throws EmailExists {
         if (emailExist(accountDto.getEmail())) {
-            throw new EmailExistsException(
+            throw new EmailExists(
                     "There is an account with that email adress:" + accountDto.getEmail());
         }
         Person user = new Person();
         user.setFirstName(accountDto.getFirstName());
         user.setLastName(accountDto.getLastName());
-
         user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
-
         user.setEmail(accountDto.getEmail());
         user.setRole(new Role(Integer.valueOf(1), user));
         return repository.save(user);
     }
+
+    private boolean emailExist(final String email) {
+        return personRepository.findByEmail(email) != null;
+    }
+
+
+    public VerificationToken getVerificationToken(final String VerificationToken) {
+        return tokenRepository.findByToken(VerificationToken);
+    }
+
 
 
 
