@@ -9,8 +9,9 @@ import java.util.*;
 public class Role {
 
     @Id
+    @Column(unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
 
     private String name;
     @ManyToMany(mappedBy = "roles")

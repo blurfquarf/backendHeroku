@@ -20,12 +20,15 @@ public class Person {
             strategy = GenerationType.SEQUENCE,
             generator = "person_sequence"
     )
-
-    private String password;
+    @Column(unique = true, nullable = false)
     private long id;
+
+
+
     private String firstName;
     private String lastName;
     private String email;
+    private String password;
 
     //private String secret;
 
@@ -122,5 +125,17 @@ public class Person {
 
     public void setRoles(final Collection<Role> r) {
         this.roles = r;
+    }
+
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+
+    public Collection<Subject> getSubject() {
+        return subject;
+    }
+
+    public void setSubject(Collection<Subject> subject) {
+        this.subject = subject;
     }
 }
