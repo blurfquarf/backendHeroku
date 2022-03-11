@@ -21,6 +21,7 @@ public class Person {
             generator = "person_sequence"
     )
 
+    private String password;
     private long id;
     private String name;
 
