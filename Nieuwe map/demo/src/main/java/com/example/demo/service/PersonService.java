@@ -63,6 +63,7 @@ public class PersonService {
         return repository.save(user);
     }
 
+
     private boolean emailExist(final String email) {
         return personRepository.findByEmail(email) != null;
     }
