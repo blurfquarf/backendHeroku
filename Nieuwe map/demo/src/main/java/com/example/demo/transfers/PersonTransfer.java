@@ -32,8 +32,6 @@ public class PersonTransfer {
     @Size(min = 1, message = "{Size.userDto.email}")
     private String email;
 
-    private boolean isUsing2FA;
-
     public String getEmail() {
         return email;
     }

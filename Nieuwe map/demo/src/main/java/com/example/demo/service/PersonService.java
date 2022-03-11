@@ -45,9 +45,6 @@ public class PersonService {
     }
 
 
-
-
-
     //iedereen registreert eerst als default persoon en masterproefcoordinator kan dan role gevenl
     //@Override
     public Person registerNewAccount(PersonTransfer accountDto) throws EmailExists {

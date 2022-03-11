@@ -39,7 +39,7 @@ public class Role {
         return name;
     }
 
-    public void setPrivileges(Collection<Privilege> privil) {
-        privileges = privil;
+    public void setPrivileges(final Collection<Privilege> privileges) {
+        this.privileges = privileges;
     }
 }

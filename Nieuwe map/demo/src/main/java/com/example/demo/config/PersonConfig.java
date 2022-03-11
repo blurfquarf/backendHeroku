@@ -14,22 +14,9 @@ import java.util.List;
 @Configuration
 public class PersonConfig {
 
-
-
-    @Autowired
-    RoleRepository roleRepository;
-
-    public void testCreateRoles(){
-        Role student = new Role("STUDENT");
-        Role promotor = new Role("PROMOTOR");
-        Role coordinator = new Role("COORDINATOR");
-        roleRepository.saveAll(List.of(student, promotor, coordinator));
-        List<Role> listRoles = roleRepository.findAll();
-
-    }
     @Bean
     public PasswordEncoder encoder(){
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder(11);
     }
 
     @Bean
@@ -47,7 +34,6 @@ public class PersonConfig {
                     List.of(BJ, geert, dinos)
             );
         };
-
 
     }
 
