@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Transactional
@@ -43,10 +44,8 @@ public class PersonService {
         personRepository.deleteById(personId);
     }
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-    @Autowired
-    private RoleRepository roleRepository;
+
+
 
 
     //iedereen registreert eerst als default persoon en masterproefcoordinator kan dan role gevenl
@@ -70,12 +69,39 @@ public class PersonService {
         return personRepository.findByEmail(email) != null;
     }
 
-
+    //@Override
     public VerificationToken getVerificationToken(final String VerificationToken) {
         return tokenRepository.findByToken(VerificationToken);
     }
 
 
+    /*public void deleteUser(final Person user) {
+        final VerificationToken verificationToken = tokenRepository.findByUser(user);
 
+        if (verificationToken != null) {
+            tokenRepository.delete(verificationToken);
+        }
+
+        final PasswordResetToken passwordToken = passwordTokenRepository.findByUser(user);
+
+        if (passwordToken != null) {
+            passwordTokenRepository.delete(passwordToken);
+        }
+
+        personRepository.delete(user);
+    }*/
+
+    public void createVerificationTokenForUser(final Person user, final String token) {
+        final VerificationToken myToken = new VerificationToken(token, user);
+        tokenRepository.save(myToken);
+    }
+
+    public VerificationToken generateNewVerificationToken(final String existingVerificationToken) {
+        VerificationToken vToken = tokenRepository.findByToken(existingVerificationToken);
+        vToken.updateToken(UUID.randomUUID()
+                .toString());
+        vToken = tokenRepository.save(vToken);
+        return vToken;
+    }
 
 }
