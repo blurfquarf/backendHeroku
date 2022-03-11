@@ -19,12 +19,25 @@ import java.util.UUID;
 @CrossOrigin(origins = "http://localhost:3000")
 public class PersonService {
 
+    @Autowired
     private final PersonRepository personRepository;
 
     @Autowired
     public PersonService(PersonRepository personRepository) {
         this.personRepository = personRepository;
     }
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private RoleRepository roleRepository;
+
+    @Autowired
+    private VerificationTokenRepository tokenRepository;
+
+
+
 
     public List<Person> getPersons(){
         return personRepository.findAll();

@@ -31,18 +31,18 @@ public class Person {
 
     @ManyToMany
     @JoinTable(
-            name = "user_subjects",
+            name = "person_subjects",
             joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "id"),
+                    name = "person_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "subject_id", referencedColumnName = "id"))
     private Collection<Subject> subject;
 
     @ManyToMany
     @JoinTable(
-            name = "users_roles",
+            name = "person_roles",
             joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "id"),
+                    name = "person_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"))
     private Collection<Role> roles;

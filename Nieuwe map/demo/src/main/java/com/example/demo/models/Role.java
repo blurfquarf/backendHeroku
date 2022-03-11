@@ -5,6 +5,7 @@ import java.util.*;
 
 
 @Entity
+@Table
 public class Role {
 
     @Id
@@ -17,7 +18,7 @@ public class Role {
 
     @ManyToMany
     @JoinTable(
-            name = "roles_privileges",
+            name = "role_privileges",
             joinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(

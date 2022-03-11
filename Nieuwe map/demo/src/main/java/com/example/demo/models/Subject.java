@@ -24,28 +24,6 @@ public class Subject {
     private String name;
     private String description;
 
-    @OneToMany(mappedBy = "subject")
-    private List<Student> student;
-
-    @ManyToOne
-    @JoinColumn(name = "promotor_id")
-    private Promotor promotor;
-
-    @ManyToOne
-    @JoinColumn(name = "bedrijfsV_id")
-    private BedrijfsVerantwoordelijke bedrijfsV;
-
-    public BedrijfsVerantwoordelijke getBedrijfsV() {return bedrijfsV;}
-
-    public Promotor getPromotor() {
-        return promotor;
-    }
-
-
-    public List<Student> getStudents() {
-        return student;
-    }
-
     public Subject(String n) {
         name = n;
     }
@@ -94,69 +72,5 @@ public class Subject {
                 ", name=" + name + ", description" + '\'' +
                 '}';
     }
-    public void setStudent(Student s){
-        if (!student.contains(s)){
-            //is er nog plaats voor deze student?
-            if (student.isEmpty()||student.size()==1){
-                student.add(s);
-                s.setSubject(this);
-            }
-            //kunnen we gebruiken om met een commando de link tussen subject en studenten
-            // te verwijderen ipv aparte methode
-            else if (s==null){
-                List<Student> tmpStudent = student;
-                student = null;
-                ListIterator<Student> itr = tmpStudent.listIterator();
-                while(itr.hasNext()) itr.next().setSubject(null);
-            }
-            /*else {
-                //methode zou de oude leerling overschrijven indien er toch inzitten,
-                //nog geen implementatie voor kunnen bedenken :p
-                //zou hier graag fout opwerpen, maar weet nog niet hoe
-                ListIterator<Student> itr = student.listIterator();
-                while(itr.hasNext()) itr.next().setSubject(null);
-                s.setSubject(null);
-                setStudent(s);
-            }*/
-        }
 
-    }
-    public void setPromotor(Promotor p){
-        if (promotor!=p){
-
-            if (promotor==null){
-                promotor=p;
-                p.setSubject(this);
-            }
-            else if (p==null){
-                Promotor tmpPromotor = promotor;
-                promotor = null;
-                tmpPromotor.setSubject(null);
-            }
-            /*else {
-                promotor.setSubject(null);
-                s.setSubject(null);
-                setPromotor(s);
-            }*/
-        }
-    }
-    public void setBedrijfsV(BedrijfsVerantwoordelijke bv){
-        if (bedrijfsV!=bv){
-
-            if (bedrijfsV==null){
-                bedrijfsV=bv;
-                bv.setSubject(this);
-            }
-            else if (bv==null){
-                BedrijfsVerantwoordelijke tmpBedrijfsV = bedrijfsV;
-                bedrijfsV = null;
-                tmpBedrijfsV.setSubject(null);
-            }
-            /*else {
-                bedrijfsV.setSubject(null);
-                s.setBedrijfsV(null);
-                setBedrijfsV(s);
-            }*/
-        }
-    }
 }
