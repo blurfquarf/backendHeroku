@@ -7,4 +7,9 @@ import org.springframework.stereotype.Repository;
 @Repository //hoe opgeslagen in databank
 public interface PersonRepository extends
         JpaRepository<Person, Long> {
+
+    Person findByEmail(String email);
+
+    @Override
+    void delete(Person user);
 }

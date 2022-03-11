@@ -9,6 +9,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import javax.transaction.Transactional;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -59,8 +61,8 @@ public class PersonService {
         user.setLastName(accountDto.getLastName());
         user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
         user.setEmail(accountDto.getEmail());
-        user.setRole(new Role(Integer.valueOf(1), user));
-        return repository.save(user);
+        //user.setRoles(Arrays.asList(roleRepository.findByName("ROLE_USER")));
+        return personRepository.save(user);
     }
 
 
