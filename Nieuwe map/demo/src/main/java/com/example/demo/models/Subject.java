@@ -9,7 +9,7 @@ import java.util.*;
 @Table
 @CrossOrigin(origins = "http://localhost:3000")
 public class Subject {
-    @Id
+    @Id @Column(name = "id")
     @SequenceGenerator(
             name = "subject_sequence",
             sequenceName = "subject_sequence",

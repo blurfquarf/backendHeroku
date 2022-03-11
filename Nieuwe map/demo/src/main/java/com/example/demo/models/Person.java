@@ -9,13 +9,13 @@ import java.util.Collection;
 @Table
 @CrossOrigin(origins = "http://localhost:3000")
 public class Person {
+
     @Id
     @SequenceGenerator(
             name = "person_sequence",
             sequenceName = "person_sequence",
             allocationSize = 1
     )
-
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
             generator = "person_sequence"
@@ -36,18 +36,18 @@ public class Person {
     @JoinTable(
             name = "person_subjects",
             joinColumns = @JoinColumn(
-                    name = "person_id", referencedColumnName = "id"),
+                    name = "person_id"),
             inverseJoinColumns = @JoinColumn(
-                    name = "subject_id", referencedColumnName = "id"))
+                    name = "subject_id"))
     private Collection<Subject> subject;
 
     @ManyToMany
     @JoinTable(
             name = "person_roles",
             joinColumns = @JoinColumn(
-                    name = "person_id", referencedColumnName = "id"),
+                    name = "person_id"),
             inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "id"))
+                    name = "role_id"))
     private Collection<Role> roles;
 
     public Person() {
