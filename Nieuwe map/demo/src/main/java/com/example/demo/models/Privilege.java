@@ -12,10 +12,10 @@ public class Privilege {
     private long id;
 
     private String name;
-
+/*
     @ManyToMany(mappedBy = "privileges")
     private Collection<Role> roles;
-
+*/
     public Privilege() {
     }
 

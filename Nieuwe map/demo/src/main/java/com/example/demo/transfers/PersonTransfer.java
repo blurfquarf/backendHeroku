@@ -5,11 +5,7 @@ import javax.validation.constraints.Size;
 import com.example.demo.checks.PasswordMatch;
 import com.example.demo.checks.ValidEmail;
 
-
-
-
 //USERDTOOOO
-
 
 @PasswordMatch
 public class PersonTransfer {

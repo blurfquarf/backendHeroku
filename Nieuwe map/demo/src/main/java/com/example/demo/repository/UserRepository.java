@@ -5,11 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository //hoe opgeslagen in databank
-public interface PersonRepository extends
-        JpaRepository<Person, Long> {
+public interface UserRepository extends
+        JpaRepository<User, Long> {
 
-    Person findByEmail(String email);
+    User findByEmail(String email);
 
     @Override
-    void delete(Person user);
+    void delete(User user);
 }

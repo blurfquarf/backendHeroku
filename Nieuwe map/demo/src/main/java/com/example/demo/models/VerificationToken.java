@@ -1,7 +1,5 @@
 package com.example.demo.models;
 
-import com.example.demo.models.Person;
-
 import java.util.Calendar;
 import java.util.Date;
 
@@ -19,9 +17,9 @@ public class VerificationToken {
 
     private String token;
 
-    @OneToOne(targetEntity = Person.class, fetch = FetchType.EAGER)
+    @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "user_id", foreignKey = @ForeignKey(name = "FK_VERIFY_USER"))
-    private Person user;
+    private User user;
 
     private Date expiryDate;
 
@@ -36,7 +34,7 @@ public class VerificationToken {
         this.expiryDate = calculateExpiryDate(EXPIRATION);
     }
 
-    public VerificationToken(final String token, final Person user) {
+    public VerificationToken(final String token, final User user) {
         super();
 
         this.token = token;
@@ -56,11 +54,11 @@ public class VerificationToken {
         this.token = token;
     }
 
-    public Person getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(final Person user) {
+    public void setUser(final User user) {
         this.user = user;
     }
 

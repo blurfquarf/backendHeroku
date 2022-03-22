@@ -1,6 +1,6 @@
 package com.example.demo.repository;
 
-import com.example.demo.models.Person;
+import com.example.demo.models.User;
 import com.example.demo.models.VerificationToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -13,7 +13,7 @@ public interface VerificationTokenRepository extends JpaRepository<VerificationT
 
     VerificationToken findByToken(String token);
 
-    VerificationToken findByUser(Person user);
+    VerificationToken findByUser(User user);
 
     Stream<VerificationToken> findAllByExpiryDateLessThan(Date now);
 

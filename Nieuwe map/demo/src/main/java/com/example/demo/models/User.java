@@ -1,71 +1,68 @@
 package com.example.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
-@Table
 @CrossOrigin(origins = "http://localhost:3000")
-public class Person {
+@Table(name = "users")
+public class User {
 
     @Id
-    @SequenceGenerator(
-            name = "person_sequence",
-            sequenceName = "person_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "person_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(unique = true, nullable = false)
-    private long id;
-
-
+    private Long id;
 
     private String firstName;
     private String lastName;
+
+    //@Column(name="email")
     private String email;
+
+    //@Column(name="password")
     private String password;
 
-    //private String secret;
 
-    @ManyToMany
-    @JoinTable(
-            name = "person_subjects",
-            joinColumns = @JoinColumn(
-                    name = "person_id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "subject_id"))
-    private Collection<Subject> subject;
-
-    @ManyToMany
-    @JoinTable(
-            name = "person_roles",
-            joinColumns = @JoinColumn(
-                    name = "person_id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id"))
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinTable(name = "role_users", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Collection<Role> roles;
+/*
 
-    public Person() {
+    @ManyToMany//(mappedBy = "users")
+    private Collection<Role> roles = new ArrayList<Role>();
+
+    /*
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name="user_roles",
+            joinColumns=@JoinColumn(name="user_id", referencedColumnName="id"),
+            inverseJoinColumns=@JoinColumn(name="role_id", referencedColumnName="id"))
+    private List<Role> roles;
+*/
+
+
+    public User() {
     }
 
-    public Person(String firstName, String lastName) {
+    public User(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public Person(String firstName, String lastName, String email, String password){
+    public User(String firstName, String lastName, String email, String password){
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -73,7 +70,7 @@ public class Person {
         return firstName + " " + lastName;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -117,13 +114,13 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "User{" +
                 "id=" + id +
                 ", name='" + firstName + " " + lastName + '\'' +
                 '}';
     }
 
-    public void setRoles(final Collection<Role> r) {
+    public void setRoles(final List<Role> r) {
         this.roles = r;
     }
 
@@ -131,6 +128,7 @@ public class Person {
         return roles;
     }
 
+    /*
     public Collection<Subject> getSubject() {
         return subject;
     }
@@ -138,4 +136,6 @@ public class Person {
     public void setSubject(Collection<Subject> subject) {
         this.subject = subject;
     }
+    */
+
 }

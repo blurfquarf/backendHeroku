@@ -8,30 +8,30 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/person")
-public class PersonController {
+public class UserController {
 
-    private final PersonService personService;
+    private final UserService userService;
 
     @Autowired
-    public PersonController(PersonService personService){
-        this.personService = personService;
+    public UserController(UserService userService){
+        this.userService = userService;
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
-    public List<Person> getPersons(){
-        return personService.getPersons();
+    public List<User> getPersons(){
+        return userService.getPersons();
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping
-    public void registerNewPerson(@RequestBody Person person){
-        personService.addNewPerson(person);
+    public void registerNewPerson(@RequestBody User user){
+        userService.addNewPerson(user);
     }
 
     @DeleteMapping("{personId}")
     @CrossOrigin(origins = "http://localhost:3000")
     public void deleteStudent(@PathVariable("personId") Long personId){
-        personService.deletePerson(personId);
+        userService.deletePerson(personId);
     }
 }

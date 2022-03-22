@@ -10,21 +10,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.transaction.Transactional;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
 @Service
 @Transactional
 @CrossOrigin(origins = "http://localhost:3000")
-public class PersonService {
+public class UserService {
 
     @Autowired
-    private final PersonRepository personRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public PersonService(PersonRepository personRepository) {
-        this.personRepository = personRepository;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Autowired
@@ -36,47 +35,42 @@ public class PersonService {
     @Autowired
     private VerificationTokenRepository tokenRepository;
 
-
-
-
-    public List<Person> getPersons(){
-        return personRepository.findAll();
+    public List<User> getPersons(){
+        return userRepository.findAll();
     }
 
-    public void addNewPerson(Person person) {
-        personRepository.save(person);
+    public void addNewPerson(User user) {
+        userRepository.save(user);
     }
-
 
     public void deletePerson(Long personId) {
-        boolean exists = personRepository.existsById(personId);
+        boolean exists = userRepository.existsById(personId);
         if(!exists){
             throw new IllegalStateException("student with id " + personId +
                     " does not exist");
         }
-        personRepository.deleteById(personId);
+        userRepository.deleteById(personId);
     }
-
 
     //iedereen registreert eerst als default persoon en masterproefcoordinator kan dan role gevenl
     //@Override
-    public Person registerNewAccount(PersonTransfer accountDto) throws EmailExists {
+    public User registerNewAccount(PersonTransfer accountDto) throws EmailExists {
         if (emailExist(accountDto.getEmail())) {
             throw new EmailExists(
                     "There is an account with that email adress:" + accountDto.getEmail());
         }
-        Person user = new Person();
+        User user = new User();
         user.setFirstName(accountDto.getFirstName());
         user.setLastName(accountDto.getLastName());
         user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
         user.setEmail(accountDto.getEmail());
         //user.setRoles(Arrays.asList(roleRepository.findByName("ROLE_USER")));
-        return personRepository.save(user);
+        return userRepository.save(user);
     }
 
 
     private boolean emailExist(final String email) {
-        return personRepository.findByEmail(email) != null;
+        return userRepository.findByEmail(email) != null;
     }
 
     //@Override
@@ -101,7 +95,7 @@ public class PersonService {
         personRepository.delete(user);
     }*/
 
-    public void createVerificationTokenForUser(final Person user, final String token) {
+    public void createVerificationTokenForUser(final User user, final String token) {
         final VerificationToken myToken = new VerificationToken(token, user);
         tokenRepository.save(myToken);
     }
