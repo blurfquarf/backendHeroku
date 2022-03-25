@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.checks.EmailExists;
 import com.example.demo.models.*;
 import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class UserController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping
-    public void registerNewPerson(@RequestBody User user){
+    public void registerNewPerson(@RequestBody User user) throws EmailExists {
         userService.addNewPerson(user);
     }
 

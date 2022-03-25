@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+import com.example.demo.checks.EmailExists;
 import com.example.demo.controller.UserController;
 import com.example.demo.models.*;
 import com.example.demo.repository.*;
@@ -25,20 +26,32 @@ public class UserConfig {
         return args -> {
 
             User BJ = new User("Berend","Jaap","mail","wachtwoord");
-            User geert = new User("Geert","Goossens","mail","wachtwoord");
-            User dinos = new User("dino","delarue","mail","wachtwoord");
+            User geert = new User("Geert","Goossens","mailo","wachtwoord");
+            User dinos = new User("dino","delarue","maili","wachtwoord");
 
             BJ.setRoles(Arrays.asList(roleRepository.findByName("STUDENT")));
             geert.setRoles(Arrays.asList(roleRepository.findByName("PROMOTOR")));
             dinos.setRoles(Arrays.asList(roleRepository.findByName("STUDENT"),roleRepository.findByName("COORDINATOR")));
 
-            List<Role> listRoles = roleRepository.findAll();
+            //List<Role> listRoles = roleRepository.findAll();
 
-            userRepository.saveAll(List.of(BJ, geert, dinos));
+            //userRepository.saveAll(List.of(BJ, geert, dinos));
 
-            userController.registerNewPerson(BJ);
-            userController.registerNewPerson(geert);
-            userController.registerNewPerson(dinos);
+            try {
+                userController.registerNewPerson(BJ);
+            } catch (EmailExists e) {
+                e.printStackTrace();
+            }
+            try {
+                userController.registerNewPerson(geert);
+            } catch (EmailExists e) {
+                e.printStackTrace();
+            }
+            try {
+                userController.registerNewPerson(dinos);
+            } catch (EmailExists e) {
+                e.printStackTrace();
+            }
         };
 
     }

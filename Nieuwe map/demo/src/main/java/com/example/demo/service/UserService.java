@@ -39,7 +39,14 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public void addNewPerson(User user) {
+    public void addNewPerson(User user) throws EmailExists {
+
+        if (emailExist(user.getEmail())) {
+            throw new EmailExists(
+                    "There is an account with that email adress:" + user.getEmail());
+        }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
         userRepository.save(user);
     }
 
@@ -54,6 +61,8 @@ public class UserService {
 
     //iedereen registreert eerst als default persoon en masterproefcoordinator kan dan role gevenl
     //@Override
+
+    /*
     public User registerNewAccount(PersonTransfer accountDto) throws EmailExists {
         if (emailExist(accountDto.getEmail())) {
             throw new EmailExists(
@@ -67,6 +76,7 @@ public class UserService {
         //user.setRoles(Arrays.asList(roleRepository.findByName("ROLE_USER")));
         return userRepository.save(user);
     }
+     */
 
 
     private boolean emailExist(final String email) {
