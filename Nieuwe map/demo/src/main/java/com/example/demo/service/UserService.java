@@ -30,7 +30,7 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private RoleRepository roleRepository;
+    private RoleRepository RoleRepository;
 
     @Autowired
     private VerificationTokenRepository tokenRepository;
