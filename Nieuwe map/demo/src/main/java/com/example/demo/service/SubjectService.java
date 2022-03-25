@@ -37,5 +37,4 @@ public class SubjectService {
         }
         subjectRepository.deleteById(studentId);
     }
-
 }
