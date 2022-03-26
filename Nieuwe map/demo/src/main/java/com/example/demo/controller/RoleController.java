@@ -36,8 +36,6 @@ public class RoleController {
         return roleService.getRoles();
     }
 
-
-
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping
     public void registerNewRole(@RequestBody Role role){

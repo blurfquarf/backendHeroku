@@ -24,7 +24,6 @@ public class SubjectController {
         return subjectService.getSubjects();
     }
 
-
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping
     public void registerNewSubject(@RequestBody Subject subject){

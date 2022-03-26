@@ -40,8 +40,12 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public void addNewPerson(User user) throws EmailExists {
 
+    private boolean emailExist(final String email) {
+        return userRepository.findByEmail(email) != null;
+    }
+
+    public void addNewPerson(User user) throws EmailExists {
         if (emailExist(user.getEmail())) {
             throw new EmailExists(
                     "There is an account with that email adress:" + user.getEmail());
@@ -50,7 +54,7 @@ public class UserService {
         //user.setRoles((List<Role>) roleRepository.findByName("BEDRIJFSVERANTWOORDELIJKE"));
         userRepository.save(user);
     }
-
+/*
     public void deletePerson(Long personId) {
         boolean exists = userRepository.existsById(personId);
         if(!exists){
@@ -63,9 +67,9 @@ public class UserService {
     //iedereen registreert eerst als default persoon en masterproefcoordinator kan dan role gevenl
     //@Override
 
-
+/*
     public void registerNewAccount(User user) throws EmailExists {
-        /*if (emailExist(user.getEmail())) {
+        if (emailExist(user.getEmail())) {
             throw new EmailExists(
                     "There is an account with that email adress:" + accountDto.getEmail());
         }
@@ -75,16 +79,13 @@ public class UserService {
         user.setLastName(accountDto.getLastName());
         user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
         user.setEmail(accountDto.getEmail());
-        */
+
         addNewPerson(user);
         user.setRoles(Arrays.asList(roleRepository.findByName("BEDRIJFSVERANTWOORDELIJKE")));
     }
 
 
 
-    private boolean emailExist(final String email) {
-        return userRepository.findByEmail(email) != null;
-    }
 
     //@Override
     public VerificationToken getVerificationToken(final String VerificationToken) {
@@ -120,5 +121,6 @@ public class UserService {
         vToken = tokenRepository.save(vToken);
         return vToken;
     }
+
 
 }

@@ -1,152 +1,185 @@
 package com.example.demo.models;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import org.springframework.web.bind.annotation.CrossOrigin;
-
+import java.util.*;
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 @Entity
-@CrossOrigin(origins = "http://localhost:3000")
-@Table(name = "users")
+@Table(	name = "users",
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = "username"),
+                @UniqueConstraint(columnNames = "email")
+        })
 public class User {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(unique = true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String firstName;
-    private String lastName;
-
-    //@Column(name="email")
+    @NotBlank
+    @Size(max = 20)
+    private String username;
+    @NotBlank
+    @Size(max = 50)
+    @Email
     private String email;
-
-    //@Column(name="password")
+    @NotBlank
+    @Size(max = 120)
     private String password;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(	name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<Role> roles = new List<Role>() {
+        @Override
+        public int size() {
+            return 0;
+        }
 
+        @Override
+        public boolean isEmpty() {
+            return false;
+        }
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @JoinTable(
-            name = "role_users",
-            joinColumns = @JoinColumn(
-                    name = "user_id",
-                    referencedColumnName = "id"
-            ),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id",
-                    referencedColumnName = "id"
-            )
-    )
-    private Collection<Role> roles;
-/*
+        @Override
+        public boolean contains(Object o) {
+            return false;
+        }
 
-    @ManyToMany//(mappedBy = "users")
-    private Collection<Role> roles = new ArrayList<Role>();
+        @Override
+        public Iterator<Role> iterator() {
+            return null;
+        }
 
-    /*
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name="user_roles",
-            joinColumns=@JoinColumn(name="user_id", referencedColumnName="id"),
-            inverseJoinColumns=@JoinColumn(name="role_id", referencedColumnName="id"))
-    private List<Role> roles;
-*/
+        @Override
+        public Object[] toArray() {
+            return new Object[0];
+        }
 
+        @Override
+        public <T> T[] toArray(T[] a) {
+            return null;
+        }
 
+        @Override
+        public boolean add(Role role) {
+            return false;
+        }
+
+        @Override
+        public boolean remove(Object o) {
+            return false;
+        }
+
+        @Override
+        public boolean containsAll(Collection<?> c) {
+            return false;
+        }
+
+        @Override
+        public boolean addAll(Collection<? extends Role> c) {
+            return false;
+        }
+
+        @Override
+        public boolean addAll(int index, Collection<? extends Role> c) {
+            return false;
+        }
+
+        @Override
+        public boolean removeAll(Collection<?> c) {
+            return false;
+        }
+
+        @Override
+        public boolean retainAll(Collection<?> c) {
+            return false;
+        }
+
+        @Override
+        public void clear() {
+
+        }
+
+        @Override
+        public Role get(int index) {
+            return null;
+        }
+
+        @Override
+        public Role set(int index, Role element) {
+            return null;
+        }
+
+        @Override
+        public void add(int index, Role element) {
+
+        }
+
+        @Override
+        public Role remove(int index) {
+            return null;
+        }
+
+        @Override
+        public int indexOf(Object o) {
+            return 0;
+        }
+
+        @Override
+        public int lastIndexOf(Object o) {
+            return 0;
+        }
+
+        @Override
+        public ListIterator<Role> listIterator() {
+            return null;
+        }
+
+        @Override
+        public ListIterator<Role> listIterator(int index) {
+            return null;
+        }
+
+        @Override
+        public List<Role> subList(int fromIndex, int toIndex) {
+            return null;
+        }
+    };
     public User() {
     }
-
-    public User(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public User(String firstName, String lastName, String email, String password){
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public User(String username, String email, String password) {
+        this.username = username;
         this.email = email;
         this.password = password;
     }
-
     public Long getId() {
         return id;
     }
-
-    public String getName() {
-        return firstName + " " + lastName;
-    }
-
     public void setId(Long id) {
         this.id = id;
     }
-
-    public void setName(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public String getUsername() {
+        return username;
     }
-
-    public String getFirstName() {
-        return firstName;
+    public void setUsername(String username) {
+        this.username = username;
     }
-
-    public void setFirstName(final String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(final String lastName) {
-        this.lastName = lastName;
-    }
-
     public String getEmail() {
         return email;
     }
-
-    public void setEmail(final String username) {
-        this.email = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
-
     public String getPassword() {
         return password;
     }
-
-    public void setPassword(final String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
-
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + firstName + " " + lastName + '\'' +
-                '}';
-    }
-
-    public void setRoles(final List<Role> r) {
-        this.roles = r;
-    }
-    public void addRoles(final Role role) {this.roles.add(role);}
-
-    public Collection<Role> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
-
-    /*
-    public Collection<Subject> getSubject() {
-        return subject;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
-
-    public void setSubject(Collection<Subject> subject) {
-        this.subject = subject;
-    }
-    */
-
 }

@@ -14,52 +14,26 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(unique = true, nullable = false)
     private Long id;
 
-    @Column(name = "name", unique = true, nullable = false)
+    @Column(length = 20)
     private String name;
 
-    @ManyToMany(mappedBy = "roles", cascade = CascadeType.MERGE)
-    private Collection<User> users = new ArrayList<User>();
-
-/*
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name="user_roles",
-            joinColumns=@JoinColumn(name="user_id", referencedColumnName="id"),
-            inverseJoinColumns=@JoinColumn(name="role_id", referencedColumnName="id"))
-    private List<User> users;
-    /*
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "roles_privileges",
-            joinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "privilege_id", referencedColumnName = "id"))
-    private Collection<Privilege> privileges;
-    */
-
-    public Role(){
+    public Role() {
     }
-
-    public Role(String name){
+    public Role(String name) {
         this.name = name;
     }
-
-    /*
-    public Collection<? extends Privilege> getPrivileges() {
-        return privileges;
+    public Long getId() {
+        return id;
     }
-*/
+    public void setId(Long id) {
+        this.id = id;
+    }
     public String getName() {
         return name;
     }
-/*
-    public void setPrivileges(final Collection<Privilege> privileges) {
-        this.privileges = privileges;
+    public void setName(String name) {
+        this.name = name;
     }
-
-     */
 }

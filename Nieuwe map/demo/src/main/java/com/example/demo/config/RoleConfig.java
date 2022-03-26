@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+import com.example.demo.models.ERole;
 import com.example.demo.models.Role;
 import com.example.demo.models.Subject;
 import com.example.demo.repository.RoleRepository;
