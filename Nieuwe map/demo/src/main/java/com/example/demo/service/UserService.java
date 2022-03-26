@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.transaction.Transactional;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,7 +31,7 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private RoleRepository RoleRepository;
+    private RoleRepository roleRepository;
 
     @Autowired
     private VerificationTokenRepository tokenRepository;
@@ -46,7 +47,7 @@ public class UserService {
                     "There is an account with that email adress:" + user.getEmail());
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-
+        //user.setRoles((List<Role>) roleRepository.findByName("BEDRIJFSVERANTWOORDELIJKE"));
         userRepository.save(user);
     }
 
@@ -62,21 +63,23 @@ public class UserService {
     //iedereen registreert eerst als default persoon en masterproefcoordinator kan dan role gevenl
     //@Override
 
-    /*
-    public User registerNewAccount(PersonTransfer accountDto) throws EmailExists {
-        if (emailExist(accountDto.getEmail())) {
+
+    public void registerNewAccount(User user) throws EmailExists {
+        /*if (emailExist(user.getEmail())) {
             throw new EmailExists(
                     "There is an account with that email adress:" + accountDto.getEmail());
         }
+
         User user = new User();
         user.setFirstName(accountDto.getFirstName());
         user.setLastName(accountDto.getLastName());
         user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
         user.setEmail(accountDto.getEmail());
-        //user.setRoles(Arrays.asList(roleRepository.findByName("ROLE_USER")));
-        return userRepository.save(user);
+        */
+        addNewPerson(user);
+        user.setRoles(Arrays.asList(roleRepository.findByName("BEDRIJFSVERANTWOORDELIJKE")));
     }
-     */
+
 
 
     private boolean emailExist(final String email) {

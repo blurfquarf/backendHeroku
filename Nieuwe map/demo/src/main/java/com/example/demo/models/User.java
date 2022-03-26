@@ -30,7 +30,17 @@ public class User {
 
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @JoinTable(name = "role_users", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    @JoinTable(
+            name = "role_users",
+            joinColumns = @JoinColumn(
+                    name = "user_id",
+                    referencedColumnName = "id"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id",
+                    referencedColumnName = "id"
+            )
+    )
     private Collection<Role> roles;
 /*
 
@@ -123,6 +133,7 @@ public class User {
     public void setRoles(final List<Role> r) {
         this.roles = r;
     }
+    public void addRoles(final Role role) {this.roles.add(role);}
 
     public Collection<Role> getRoles() {
         return roles;

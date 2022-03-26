@@ -38,17 +38,17 @@ public class UserConfig {
             //userRepository.saveAll(List.of(BJ, geert, dinos));
 
             try {
-                userController.registerNewPerson(BJ);
+                userController.addNewPerson(BJ);
             } catch (EmailExists e) {
                 e.printStackTrace();
             }
             try {
-                userController.registerNewPerson(geert);
+                userController.addNewPerson(geert);
             } catch (EmailExists e) {
                 e.printStackTrace();
             }
             try {
-                userController.registerNewPerson(dinos);
+                userController.addNewPerson(dinos);
             } catch (EmailExists e) {
                 e.printStackTrace();
             }
