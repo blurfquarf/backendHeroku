@@ -10,6 +10,7 @@ import java.util.List;
 @Configuration
 public class SubjectConfig {
 
+
     @Bean
     CommandLineRunner commandLineRunner2(SubjectRepository repository){
         return args -> {
