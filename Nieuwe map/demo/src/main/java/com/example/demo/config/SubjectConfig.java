@@ -16,7 +16,6 @@ public class SubjectConfig {
         return args -> {
             Subject taartenBakken = new Subject("Taarten bakken");
 
-
             Subject nanobots = new Subject("vroemvroem");
 
             Subject dinos = new Subject("graaaauuww");

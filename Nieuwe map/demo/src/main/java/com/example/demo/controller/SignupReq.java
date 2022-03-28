@@ -7,18 +7,15 @@ import javax.validation.constraints.*;
 
 public class SignupReq {
     @NotBlank
-    @Size(min = 3, max = 20)
     private String username;
 
     @NotBlank
-    @Size(max = 50)
     @Email
     private String email;
 
-    private List<String> role;
+    //private List<String> role;
 
     @NotBlank
-    @Size(min = 6, max = 40)
     private String password;
 
     public String getUsername() {
@@ -45,6 +42,7 @@ public class SignupReq {
         this.password = password;
     }
 
+    /*
     public List<String> getRole() {
         return this.role;
     }
@@ -52,4 +50,5 @@ public class SignupReq {
     public void setRole(List<String> role) {
         this.role = role;
     }
+     */
 }

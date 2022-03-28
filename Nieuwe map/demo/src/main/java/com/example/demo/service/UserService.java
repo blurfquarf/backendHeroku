@@ -45,6 +45,7 @@ public class UserService {
         return userRepository.findByEmail(email) != null;
     }
 
+
     public void addNewPerson(User user) throws EmailExists {
         if (emailExist(user.getEmail())) {
             throw new EmailExists(
@@ -67,24 +68,20 @@ public class UserService {
     //iedereen registreert eerst als default persoon en masterproefcoordinator kan dan role gevenl
     //@Override
 
-/*
+*/
+
+    /*
     public void registerNewAccount(User user) throws EmailExists {
         if (emailExist(user.getEmail())) {
             throw new EmailExists(
-                    "There is an account with that email adress:" + accountDto.getEmail());
+                    "There is an account with that email adress:" + user.getEmail());
         }
-
-        User user = new User();
-        user.setFirstName(accountDto.getFirstName());
-        user.setLastName(accountDto.getLastName());
-        user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
-        user.setEmail(accountDto.getEmail());
 
         addNewPerson(user);
         user.setRoles(Arrays.asList(roleRepository.findByName("BEDRIJFSVERANTWOORDELIJKE")));
     }
-
-
+*/
+/*
 
 
     //@Override
@@ -92,7 +89,7 @@ public class UserService {
         return tokenRepository.findByToken(VerificationToken);
     }
 
-
+*/
     /*public void deleteUser(final Person user) {
         final VerificationToken verificationToken = tokenRepository.findByUser(user);
 

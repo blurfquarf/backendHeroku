@@ -58,6 +58,8 @@ public class AuthController {
                 roles));
     }
 
+
+
     @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupReq signUpRequest) {
@@ -75,152 +77,12 @@ public class AuthController {
         User user = new User(signUpRequest.getUsername(),
                 signUpRequest.getEmail(),
                 encoder.encode(signUpRequest.getPassword()));
-        List<String> strRoles = signUpRequest.getRole();
-        List<Role> roles = new List<Role>() {
-            @Override
-            public int size() {
-                return 0;
-            }
-
-            @Override
-            public boolean isEmpty() {
-                return false;
-            }
-
-            @Override
-            public boolean contains(Object o) {
-                return false;
-            }
-
-            @Override
-            public Iterator<Role> iterator() {
-                return null;
-            }
-
-            @Override
-            public Object[] toArray() {
-                return new Object[0];
-            }
-
-            @Override
-            public <T> T[] toArray(T[] a) {
-                return null;
-            }
-
-            @Override
-            public boolean add(Role role) {
-                return false;
-            }
-
-            @Override
-            public boolean remove(Object o) {
-                return false;
-            }
-
-            @Override
-            public boolean containsAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean addAll(Collection<? extends Role> c) {
-                return false;
-            }
-
-            @Override
-            public boolean addAll(int index, Collection<? extends Role> c) {
-                return false;
-            }
-
-            @Override
-            public boolean removeAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean retainAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public void clear() {
-
-            }
-
-            @Override
-            public Role get(int index) {
-                return null;
-            }
-
-            @Override
-            public Role set(int index, Role element) {
-                return null;
-            }
-
-            @Override
-            public void add(int index, Role element) {
-
-            }
-
-            @Override
-            public Role remove(int index) {
-                return null;
-            }
-
-            @Override
-            public int indexOf(Object o) {
-                return 0;
-            }
-
-            @Override
-            public int lastIndexOf(Object o) {
-                return 0;
-            }
-
-            @Override
-            public ListIterator<Role> listIterator() {
-                return null;
-            }
-
-            @Override
-            public ListIterator<Role> listIterator(int index) {
-                return null;
-            }
-
-            @Override
-            public List<Role> subList(int fromIndex, int toIndex) {
-                return null;
-            }
-        };
-        if (strRoles == null) {
-            Role userRole = roleRepository.findByName("ROLE_BEDRIJF");
+        //List<Role> roles = new List<Role>();
                     //.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-            roles.add(userRole);
-        }
-        /*
-        else {
-            strRoles.forEach(role -> {
-                switch (role) {
-                    case "admin":
-                        Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
-                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                        roles.add(adminRole);
-                        break;
-                    case "promotor":
-                        Role modRole = roleRepository.findByName(ERole.ROLE_PROMOTOR)
-                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                        roles.add(modRole);
-                        break;
-                    default:
-                        Role userRole = roleRepository.findByName(ERole.ROLE_STUDENT)
-                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                        roles.add(userRole);
-                }
-            });
-        }
-        */
-        user.setRoles(roles);
+        // /*
+        //roles.add(roleRepository.findByName("ROLE_BEDRIJF"));
+        //user.setRoles(roles);
         userRepository.save(user);
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
-    }
+   }
 }
