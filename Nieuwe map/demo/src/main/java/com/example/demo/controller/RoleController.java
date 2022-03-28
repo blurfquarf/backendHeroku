@@ -18,18 +18,6 @@ public class RoleController {
         this.roleService = roleService;
     }
 
-    /*
-    @GetMapping("/roleHierarchy")
-    public ModelAndView roleHierarcy() {
-        ModelAndView model = new ModelAndView();
-        model.addObject("adminMessage","Admin content available");
-        model.addObject("staffMessage","Staff content available");
-        model.addObject("userMessage","User content available");
-        model.setViewName("roleHierarchy");
-        return model;
-    }
-*/
-
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
     public List<Role> getRole(){

@@ -3,7 +3,6 @@ package com.example.demo.service;
 import com.example.demo.checks.EmailExists;
 import com.example.demo.models.*;
 import com.example.demo.repository.*;
-import com.example.demo.transfers.PersonTransfer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

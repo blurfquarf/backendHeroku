@@ -3,8 +3,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 import javax.validation.Valid;
 
-import com.example.demo.models.ERole;
-import com.example.demo.models.Role;
 import com.example.demo.models.User;
 import com.example.demo.repository.RoleRepository;
 import com.example.demo.repository.UserRepository;
@@ -23,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/auth")
@@ -35,15 +32,15 @@ public class AuthController {
     @Autowired
     RoleRepository roleRepository;
     @Autowired
-    PasswordEncoder encoder;
+    PasswordEncoder passwordEncoder;
     @Autowired
     JwtUtils jwtUtils;
 
     @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
     @PostMapping("/login")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginReq loginRequest) {
+    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginReq Loginrequest) {
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+                new UsernamePasswordAuthenticationToken(Loginrequest.getUsername(), Loginrequest.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
 
@@ -62,26 +59,19 @@ public class AuthController {
 
     @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupReq signUpRequest) {
-        if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+    public ResponseEntity<?> registerUser(@Valid @RequestBody User user) {
+        if (userRepository.existsByUsername(user.getUsername())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Username is already taken!"));
         }
-        if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+        if (userRepository.existsByEmail(user.getEmail())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Email is already in use!"));
         }
-        // Create new user's account
-        User user = new User(signUpRequest.getUsername(),
-                signUpRequest.getEmail(),
-                encoder.encode(signUpRequest.getPassword()));
-        //List<Role> roles = new List<Role>();
-                    //.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-        // /*
-        //roles.add(roleRepository.findByName("ROLE_BEDRIJF"));
-        //user.setRoles(roles);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRoles(Arrays.asList(roleRepository.findByName("ROLE_BEDRIJF")));
         userRepository.save(user);
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
    }
