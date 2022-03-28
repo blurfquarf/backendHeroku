@@ -35,6 +35,4 @@ public class SubjectController {
     public void deleteSubject(@PathVariable("subjectId") Long subjectId){
         subjectService.deleteSubject(subjectId);
     }
-
-
 }
