@@ -5,6 +5,7 @@ import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -24,9 +25,9 @@ public class SubjectController {
         return subjectService.getSubjects();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
     @PostMapping
-    public void registerNewSubject(@RequestBody Subject subject){
+    public void registerNewSubject(@Valid @RequestBody Subject subject){
         subjectService.addNewSubject(subject);
     }
 
