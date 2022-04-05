@@ -34,7 +34,7 @@ public class UserConfig {
             User dinos = new User("dinodelarue","maili@gmail.com","wachtwoord");
 
             BJ.setRoles(Arrays.asList(roleRepository.findByName("ROLE_STUDENT")));
-            geert.setRoles(Arrays.asList(roleRepository.findByName("ROLE_ADMIN")));
+            geert.setRoles(Arrays.asList(roleRepository.findByName("ROLE_PROMOTOR")));
             dinos.setRoles(Arrays.asList(roleRepository.findByName("ROLE_COORDINATOR")));
 /*
             //List<Role> listRoles = roleRepository.findAll();
