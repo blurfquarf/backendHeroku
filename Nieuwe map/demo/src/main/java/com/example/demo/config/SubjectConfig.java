@@ -14,7 +14,7 @@ public class SubjectConfig {
     @Bean
     CommandLineRunner commandLineRunner2(SubjectRepository repository){
         return args -> {
-            Subject taartenBakken = new Subject("Taarten bakken");
+            Subject taartenBakken = new Subject("Taarten bakken", "sssss");
 
             Subject nanobots = new Subject("vroemvroem");
 

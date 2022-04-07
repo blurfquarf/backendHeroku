@@ -55,8 +55,6 @@ public class AuthController {
                 roles));
     }
 
-
-
     @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody User user) {
