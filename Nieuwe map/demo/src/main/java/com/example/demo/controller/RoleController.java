@@ -18,20 +18,20 @@ public class RoleController {
         this.roleService = roleService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://localhost:3000")
     @GetMapping
     public List<Role> getRole(){
         return roleService.getRoles();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://localhost:3000")
     @PostMapping
     public void registerNewRole(@RequestBody Role role){
         roleService.addNewRole(role);
     }
 
     @DeleteMapping("{subjectId}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://localhost:3000")
     public void deleteSubject(@PathVariable("roleId") Long roleId){
         roleService.deleteRole(roleId);
     }

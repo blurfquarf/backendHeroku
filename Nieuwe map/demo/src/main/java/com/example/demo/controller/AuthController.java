@@ -36,7 +36,7 @@ public class AuthController {
     @Autowired
     JwtUtils jwtUtils;
 
-    @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginReq Loginrequest) {
         Authentication authentication = authenticationManager.authenticate(
@@ -55,7 +55,7 @@ public class AuthController {
                 roles));
     }
 
-    @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody User user) {
         if (userRepository.existsByUsername(user.getUsername())) {

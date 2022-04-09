@@ -18,7 +18,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://localhost:3000")
     @GetMapping
     public List<User> getPersons(){
         return userService.getPersons();
@@ -34,7 +34,7 @@ public class UserController {
     }
 */
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://localhost:3000")
     @PostMapping
     public void addNewPerson(@RequestBody User user) throws EmailExists {
         userService.addNewPerson(user);

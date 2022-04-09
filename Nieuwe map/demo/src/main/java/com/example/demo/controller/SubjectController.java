@@ -19,20 +19,20 @@ public class SubjectController {
         this.subjectService = subjectService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://localhost:3000")
     @GetMapping
     public List<Subject> getSubject(){
         return subjectService.getSubjects();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     @PostMapping
     public void registerNewSubject(@Valid @RequestBody Subject subject){
         subjectService.addNewSubject(subject);
     }
 
     @DeleteMapping("{subjectId}")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://localhost:3000")
     public void deleteSubject(@PathVariable("subjectId") Long subjectId){
         subjectService.deleteSubject(subjectId);
     }
