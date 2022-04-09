@@ -18,7 +18,7 @@ public class SubjectConfig {
 
             Subject nanobots = new Subject("vroemvroem");
 
-            Subject dinos = new Subject("graaaauuww");
+            Subject dinos = new Subject("nog niet beslist");
 
 
             repository.saveAll(

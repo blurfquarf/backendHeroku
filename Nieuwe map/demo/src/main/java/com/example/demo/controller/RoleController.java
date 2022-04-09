@@ -30,9 +30,9 @@ public class RoleController {
         roleService.addNewRole(role);
     }
 
-    @DeleteMapping("{subjectId}")
+    @DeleteMapping("{roleId}")
     @CrossOrigin(origins = "https://localhost:3000")
-    public void deleteSubject(@PathVariable("roleId") Long roleId){
+    public void deleteRole(@PathVariable("roleId") Long roleId){
         roleService.deleteRole(roleId);
     }
 

@@ -8,4 +8,9 @@ import org.springframework.stereotype.Repository;
 public interface SubjectRepository extends
         JpaRepository<Subject, Long> {
 
+    Subject findByName(String name);
+
+
+    @Override
+    void delete(Subject subject);
 }

@@ -145,6 +145,140 @@ public class User {
             return null;
         }
     };
+
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(	name = "user_subjects",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "subject_id"))
+    private List<Subject> subjects = new List<Subject>() {
+        @Override
+        public int size() {
+            return 0;
+        }
+
+        @Override
+        public boolean isEmpty() {
+            return false;
+        }
+
+        @Override
+        public boolean contains(Object o) {
+            return false;
+        }
+
+        @Override
+        public Iterator<Subject> iterator() {
+            return null;
+        }
+
+        @Override
+        public Object[] toArray() {
+            return new Object[0];
+        }
+
+        @Override
+        public <T> T[] toArray(T[] a) {
+            return null;
+        }
+
+        @Override
+        public boolean add(Subject subject) {
+            return false;
+        }
+
+        @Override
+        public boolean remove(Object o) {
+            return false;
+        }
+
+        @Override
+        public boolean containsAll(Collection<?> c) {
+            return false;
+        }
+
+        @Override
+        public boolean addAll(Collection<? extends Subject> c) {
+            return false;
+        }
+
+        @Override
+        public boolean addAll(int index, Collection<? extends Subject> c) {
+            return false;
+        }
+
+        @Override
+        public boolean removeAll(Collection<?> c) {
+            return false;
+        }
+
+        @Override
+        public boolean retainAll(Collection<?> c) {
+            return false;
+        }
+
+        @Override
+        public void clear() {
+
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            return false;
+        }
+
+        @Override
+        public int hashCode() {
+            return 0;
+        }
+
+        @Override
+        public Subject get(int index) {
+            return null;
+        }
+
+        @Override
+        public Subject set(int index, Subject element) {
+            return null;
+        }
+
+        @Override
+        public void add(int index, Subject element) {
+
+        }
+
+        @Override
+        public Subject remove(int index) {
+            return null;
+        }
+
+        @Override
+        public int indexOf(Object o) {
+            return 0;
+        }
+
+        @Override
+        public int lastIndexOf(Object o) {
+            return 0;
+        }
+
+        @Override
+        public ListIterator<Subject> listIterator() {
+            return null;
+        }
+
+        @Override
+        public ListIterator<Subject> listIterator(int index) {
+            return null;
+        }
+
+        @Override
+        public List<Subject> subList(int fromIndex, int toIndex) {
+            return null;
+        }
+    };
+
+
     public User() {
     }
     public User(String username, String email, String password) {
@@ -182,4 +316,9 @@ public class User {
     public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
+
+    public List<Subject> getSubjects() {
+        return subjects;
+    }
+    public void setSubjects(List<Subject> subjects){this.subjects = subjects;}
 }

@@ -25,7 +25,7 @@ public class UserConfig {
     }
 
     @Bean
-    CommandLineRunner commandLineRunner1(UserRepository userRepository, RoleRepository roleRepository, UserController userController) {
+    CommandLineRunner commandLineRunner1(UserRepository userRepository, RoleRepository roleRepository, UserController userController, SubjectRepository subjectRepository) {
         return args -> {
 
 
@@ -36,9 +36,14 @@ public class UserConfig {
             BJ.setRoles(Arrays.asList(roleRepository.findByName("ROLE_STUDENT")));
             geert.setRoles(Arrays.asList(roleRepository.findByName("ROLE_PROMOTOR")));
             dinos.setRoles(Arrays.asList(roleRepository.findByName("ROLE_COORDINATOR")));
-/*
+
+
+            BJ.setSubjects(Arrays.asList(subjectRepository.findByName("vroemvroem")));
+            geert.setSubjects(Arrays.asList(subjectRepository.findByName("vroemvroem")));
+            dinos.setSubjects(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
+
             //List<Role> listRoles = roleRepository.findAll();
-*/
+
             //userRepository.saveAll(List.of(BJ, geert, dinos));
 
             try {

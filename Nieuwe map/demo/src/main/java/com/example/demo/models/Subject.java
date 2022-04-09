@@ -22,21 +22,21 @@ public class Subject {
     )
 
     private Long id;
-    private String title;
+    private String name;
     private String description;
 
     public Subject(String n) {
-        title = n;
+        name = n;
     }
 
-    public Subject(Long id, String title, String description) {
+    public Subject(Long id, String name, String description) {
         this.id = id;
-        this.title = title;
+        this.name = name;
         this.description = description;
     }
 
-    public Subject(String title, String description) {
-        this.title = title;
+    public Subject(String name, String description) {
+        this.name = name;
         this.description = description;
     }
 
@@ -51,12 +51,12 @@ public class Subject {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription(){
@@ -70,7 +70,7 @@ public class Subject {
     public String toString() {
         return "Subject{" +
                 "id=" + id +
-                ", title=" + title + ", description" + '\'' +
+                ", title=" + name + ", description" + '\'' +
                 '}';
     }
 
