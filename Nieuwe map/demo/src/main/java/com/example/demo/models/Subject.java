@@ -7,7 +7,7 @@ import java.util.*;
 
 @Entity
 @Table
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://localhost:3000")
 public class Subject {
     @Id
     @Column(unique = true, nullable = false)
@@ -25,19 +25,23 @@ public class Subject {
     private String name;
     private String description;
 
+    private boolean approved;
     public Subject(String n) {
         name = n;
     }
 
-    public Subject(Long id, String name, String description) {
+
+    public Subject(Long id, String name, String description, boolean approved) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.approved = approved;
     }
 
-    public Subject(String name, String description) {
+    public Subject(String name, String description, boolean approved) {
         this.name = name;
         this.description = description;
+        this.approved = approved;
     }
 
     public Subject() {
@@ -64,6 +68,14 @@ public class Subject {
     }
     public void setDescription(String description){
         this.description = description;
+    }
+
+    public boolean getApproved(){
+        return approved;
+    }
+
+    public void setApproved(){
+        approved = true;
     }
 
     @Override

@@ -9,7 +9,7 @@ import java.util.*;
 
 
 @Entity
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://localhost:3000")
 public class Role {
 
     @Id
