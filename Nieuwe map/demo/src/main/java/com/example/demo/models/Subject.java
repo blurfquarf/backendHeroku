@@ -25,11 +25,14 @@ public class Subject {
     private String name;
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "promotor")
+    private User promotor;
     private boolean approved;
+
     public Subject(String n) {
         name = n;
     }
-
 
     public Subject(Long id, String name, String description, boolean approved) {
         this.id = id;
@@ -78,6 +81,18 @@ public class Subject {
         approved = true;
     }
 
+    public void setPromotor(Optional<User> promotor){
+        this.promotor = promotor;
+    }
+
+    public User getPromotor(){
+        return promotor;
+    }
+
+/*    public List<User> getPromotor() {
+        return promotoren;
+    }
+    public void setPromotoren(List<User> promotoren){this.promotoren = promotoren;}*/
     @Override
     public String toString() {
         return "Subject{" +
