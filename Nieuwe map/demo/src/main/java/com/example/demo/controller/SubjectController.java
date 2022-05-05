@@ -46,7 +46,7 @@ public class SubjectController {
     @PutMapping("/copro")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public void copromotoren(@RequestParam String copromail, @RequestParam String subjectName){
-        subjectService.changePromotor(copromail, subjectName);
+        subjectService.setCopros(copromail, subjectName);
     }
 
 
