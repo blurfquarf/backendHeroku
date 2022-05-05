@@ -42,6 +42,10 @@ public class UserConfig {
             geert.setSubjects(Arrays.asList(subjectRepository.findByName("vroemvroem")));
             dinos.setSubjects(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
 
+            BJ.setCampus("Gent");
+            geert.setCampus("Kortrijk");
+            dinos.setCampus("Aalst");
+
             //List<Role> listRoles = roleRepository.findAll();
 
             //userRepository.saveAll(List.of(BJ, geert, dinos));

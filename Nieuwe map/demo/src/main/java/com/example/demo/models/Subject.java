@@ -81,7 +81,7 @@ public class Subject {
         approved = true;
     }
 
-    public void setPromotor(Optional<User> promotor){
+    public void setPromotor(User promotor){
         this.promotor = promotor;
     }
 

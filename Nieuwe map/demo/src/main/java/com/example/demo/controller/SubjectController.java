@@ -36,4 +36,20 @@ public class SubjectController {
     public void deleteSubject(@PathVariable("subjectId") Long subjectId){
         subjectService.deleteSubject(subjectId);
     }
+
+    @PutMapping("/pro")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
+    public void promotor(@RequestParam String subjectName, @RequestParam String mail){
+        subjectService.changePromotor(subjectName, mail);
+    }
+
+    @PutMapping("/approved")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
+    public void approved(@RequestParam String subjectName){
+        subjectService.setApproved(subjectName);
+    }
+
+
+
+
 }

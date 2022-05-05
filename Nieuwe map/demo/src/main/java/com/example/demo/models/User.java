@@ -25,6 +25,9 @@ public class User {
     @NotBlank
     @Size(max = 120)
     private String password;
+
+    private String campus;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -321,4 +324,12 @@ public class User {
         return subjects;
     }
     public void setSubjects(List<Subject> subjects){this.subjects = subjects;}
+
+    public String getCampus() {
+        return campus;
+    }
+
+    public void setCampus(String campus) {
+        this.campus = campus;
+    }
 }

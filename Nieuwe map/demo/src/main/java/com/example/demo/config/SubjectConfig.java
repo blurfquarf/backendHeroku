@@ -21,10 +21,12 @@ public class SubjectConfig {
 
             Subject dinos = new Subject("nog niet beslist");
 
+/*
 
             taartenBakken.setPromotor(userRepository.findByUsername("GeertGoossens"));
             nanobots.setPromotor(userRepository.findByUsername("GeertGoossens"));
             dinos.setPromotor(userRepository.findByUsername("GeertGoossens"));
+*/
 
 
 
