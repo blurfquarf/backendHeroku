@@ -47,6 +47,12 @@ public class SubjectService {
         s.setPromotor(userRepository.findByEmail(mail));
     }
 
+    public void setCopros(String copro, String subjectName) {
+        Subject s = subjectRepository.findByName(subjectName);
+        s.getCopromotoren().add(userRepository.findByEmail(copro));
+    }
+
+
     public void setApproved(String subjectName) {
         Subject s = subjectRepository.findByName(subjectName);
         s.setApproved();

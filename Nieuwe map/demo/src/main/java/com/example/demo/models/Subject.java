@@ -28,6 +28,23 @@ public class Subject {
 
     private String campus;
 
+
+    public List<User> getCopromotoren() {
+        return copromotoren;
+    }
+
+    public void setCopromotoren(List<User> copromotoren) {
+        this.copromotoren = copromotoren;
+    }
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(	name = "copromotor_subj",
+            joinColumns = @JoinColumn(name = "subject_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private List<User> copromotoren = new ArrayList<User>();
+
+
+
     @ManyToOne
     @JoinColumn(name = "promotor")
     private User promotor;

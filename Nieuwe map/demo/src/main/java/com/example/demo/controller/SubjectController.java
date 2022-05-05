@@ -43,6 +43,13 @@ public class SubjectController {
         subjectService.changePromotor(subjectName, mail);
     }
 
+    @PutMapping("/copro")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
+    public void copromotoren(@RequestParam String copromail, @RequestParam String subjectName){
+        subjectService.changePromotor(copromail, subjectName);
+    }
+
+
     @PutMapping("/approved")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public void approved(@RequestParam String subjectName){
@@ -54,6 +61,8 @@ public class SubjectController {
     public void campus(@RequestParam String subjectName, String campus){
         subjectService.setCampus(subjectName, campus);
     }
+
+
 
 
 
