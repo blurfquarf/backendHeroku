@@ -25,6 +25,9 @@ public class Subject {
     private String name;
     private String description;
 
+
+    private String campus;
+
     @ManyToOne
     @JoinColumn(name = "promotor")
     private User promotor;
@@ -99,6 +102,14 @@ public class Subject {
                 "id=" + id +
                 ", title=" + name + ", description" + '\'' +
                 '}';
+    }
+
+    public String getCampus() {
+        return campus;
+    }
+
+    public void setCampus(String campus) {
+        this.campus = campus;
     }
 
 }

@@ -52,5 +52,8 @@ public class SubjectService {
         s.setApproved();
     }
 
-
+    public void setCampus(String subjectName, String campus) {
+        Subject s = subjectRepository.findByName(subjectName);
+        s.setCampus(campus);
+    }
 }
