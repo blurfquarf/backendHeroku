@@ -46,10 +46,6 @@ public class UserConfig {
             geert.setCampus("Kortrijk");
             dinos.setCampus("Aalst");
 
-            //List<Role> listRoles = roleRepository.findAll();
-
-            //userRepository.saveAll(List.of(BJ, geert, dinos));
-
             try {
                 userController.addNewPerson(BJ);
             } catch (EmailExists e) {
