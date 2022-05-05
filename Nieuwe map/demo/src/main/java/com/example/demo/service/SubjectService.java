@@ -62,4 +62,9 @@ public class SubjectService {
         Subject s = subjectRepository.findByName(subjectName);
         s.setCampus(campus);
     }
+
+    public void setRGGK(String subjectName) {
+        Subject s = subjectRepository.findByName(subjectName);
+        s.setReedsGoedgekeurd();
+    }
 }

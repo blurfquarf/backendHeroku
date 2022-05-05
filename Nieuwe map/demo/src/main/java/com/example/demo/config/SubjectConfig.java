@@ -22,6 +22,8 @@ public class SubjectConfig {
             Subject dinos = new Subject("nog niet beslist");
 
             dinos.setCampus("Gent");
+
+            taartenBakken.setReedsGoedgekeurd();
 /*
 
             taartenBakken.setPromotor(userRepository.findByUsername("GeertGoossens"));

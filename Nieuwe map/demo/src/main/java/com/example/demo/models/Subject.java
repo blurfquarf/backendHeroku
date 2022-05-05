@@ -25,7 +25,7 @@ public class Subject {
     private String name;
     private String description;
 
-
+    private boolean reedsGoedgekeurd;
     private String campus;
 
 
@@ -42,7 +42,6 @@ public class Subject {
             joinColumns = @JoinColumn(name = "subject_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<User> copromotoren = new ArrayList<User>();
-
 
 
     @ManyToOne
@@ -127,6 +126,14 @@ public class Subject {
 
     public void setCampus(String campus) {
         this.campus = campus;
+    }
+
+    public boolean getReedsGoedgekeurd() {
+        return reedsGoedgekeurd;
+    }
+
+    public void setReedsGoedgekeurd() {
+        reedsGoedgekeurd = true;
     }
 
 }

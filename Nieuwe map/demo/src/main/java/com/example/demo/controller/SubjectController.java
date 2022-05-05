@@ -62,7 +62,11 @@ public class SubjectController {
         subjectService.setCampus(subjectName, campus);
     }
 
-
+    @PutMapping("/reedsGoedgekeurd")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
+    public void reedsGGK(@RequestParam String subjectName){
+        subjectService.setRGGK(subjectName);
+    }
 
 
 
