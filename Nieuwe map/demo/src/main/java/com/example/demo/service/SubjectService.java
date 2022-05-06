@@ -16,13 +16,15 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:3000")
 public class SubjectService {
 
-    private final SubjectRepository subjectRepository;
-    private final UserRepository userRepository;
+    private SubjectRepository subjectRepository;
+    private UserRepository userRepository;
+    private CampusRepository campusRepository;
 
     @Autowired
-    public SubjectService(SubjectRepository subjectRepository, UserRepository userRepository) {
+    public SubjectService(SubjectRepository subjectRepository, UserRepository userRepository, CampusRepository campusRepository) {
         this.subjectRepository = subjectRepository;
         this.userRepository = userRepository;
+        this.campusRepository = campusRepository;
     }
 
     public List<Subject> getSubjects() {
@@ -58,9 +60,12 @@ public class SubjectService {
         s.setApproved();
     }
 
-    public void setCampus(String subjectName, String campus) {
-        Subject s = subjectRepository.findByName(subjectName);
-        s.setCampus(campus);
+    public void setCampus(List<String> campussen, String subject) {
+        Subject s = subjectRepository.findByName(subject);
+        for (int i = 0; i < campussen.size(); i++){
+            Campus c = campusRepository.findByName(campussen.get(i));
+            s.addToCampussen(c);
+        }
     }
 
     public void setRGGK(String subjectName) {

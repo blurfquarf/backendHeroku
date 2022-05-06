@@ -58,8 +58,8 @@ public class SubjectController {
 
     @PutMapping("/campus")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
-    public void campus(@RequestParam String subjectName, String campus){
-        subjectService.setCampus(subjectName, campus);
+    public void campus(@RequestParam List<String> campussen, @RequestParam String subject){
+        subjectService.setCampus(campussen, subject);
     }
 
     @PutMapping("/reedsgoedgekeurd")

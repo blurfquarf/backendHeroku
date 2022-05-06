@@ -26,7 +26,24 @@ public class Subject {
     private String description;
 
     private boolean reedsGoedgekeurd;
-    private String campus;
+
+    public List<Campus> getCampussen() {
+        return campussen;
+    }
+
+    public void setCampussen(List<Campus> campussen) {
+        this.campussen = campussen;
+    }
+
+    public void addToCampussen(Campus campus) {
+        campussen.add(campus);
+    }
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(	name = "campus_subject",
+            joinColumns = @JoinColumn(name = "subject_id"),
+            inverseJoinColumns = @JoinColumn(name = "campus_id"))
+    private List<Campus> campussen = new ArrayList<Campus>();
 
 
     public List<User> getCopromotoren() {
@@ -118,14 +135,6 @@ public class Subject {
                 "id=" + id +
                 ", title=" + name + ", description" + '\'' +
                 '}';
-    }
-
-    public String getCampus() {
-        return campus;
-    }
-
-    public void setCampus(String campus) {
-        this.campus = campus;
     }
 
     public boolean getReedsGoedgekeurd() {
