@@ -54,6 +54,10 @@ public class Subject {
         this.copromotoren = copromotoren;
     }
 
+    public void addToCopros(User u){
+        copromotoren.add(u);
+    }
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "copromotor_subj",
             joinColumns = @JoinColumn(name = "subject_id"),
