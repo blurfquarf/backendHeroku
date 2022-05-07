@@ -18,21 +18,13 @@ public class UserController {
         this.userService = userService;
     }
 
+
+/*
     @CrossOrigin(origins = "https://localhost:3000")
     @GetMapping
     public List<User> getPersons(){
         return userService.getPersons();
-    }
-
-
-    //om te testen, posten naar api/v1/person/register ==> wat in postmapping zit, wordt achter de requestmapping gepopt
-   /*
-    @CrossOrigin(origins = "http://localhost:3000")
-    @PostMapping(path = "/register")
-    public void registerNewPerson(@RequestBody User user) throws EmailExists {
-        userService.registerNewAccount(user);
-    }
-*/
+    }*/
 
     @CrossOrigin(origins = "https://localhost:3000")
     @PostMapping
@@ -40,12 +32,9 @@ public class UserController {
         userService.addNewPerson(user);
     }
 
-/*
-    @DeleteMapping("{personId}")
-    @CrossOrigin(origins = "http://localhost:3000")
-    public void deleteStudent(@PathVariable("personId") Long personId){
-        userService.deletePerson(personId);
+    @CrossOrigin(origins = "https://localhost:3000")
+    @GetMapping
+    public List<User> getPromotoren() {
+        return userService.getPros();
     }
-    */
-
 }

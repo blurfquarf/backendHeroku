@@ -16,7 +16,6 @@ public interface UserRepository extends
 
     Boolean existsByUsername(String username);
     Boolean existsByEmail(String email);
-
     @Override
     void delete(User user);
 }

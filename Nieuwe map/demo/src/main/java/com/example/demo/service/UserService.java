@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -119,4 +120,15 @@ public class UserService {
     }
 
 
+    public List<User> getPros() {
+        List<User> temp = userRepository.findAll();
+        Role role = roleRepository.findByName("ROLE_PROMOTOR");
+        List<User> pros = new ArrayList<>();
+        for(int i = 0; i < temp.size(); i++){
+            if (temp.get(i).getRoles().contains(role)){
+                pros.add(temp.get(i));
+            }
+        }
+        return pros;
+    }
 }

@@ -26,8 +26,4 @@ public class CampusController {
     public List<Campus> getCampussen(){
         return campusService.getCampussen();
     }
-
-
-
-
 }

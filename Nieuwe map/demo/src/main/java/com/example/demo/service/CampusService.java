@@ -17,8 +17,6 @@ public class CampusService {
 
     private CampusRepository campusRepository;
 
-
-
     @Autowired
     public CampusService(CampusRepository campusRepository) {
         this.campusRepository = campusRepository;

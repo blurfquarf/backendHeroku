@@ -32,11 +32,14 @@ public class UserConfig {
             User BJ = new User("BerendJaap","berend@gmail.com","wachtwoord");
             User geert = new User("GeertGoossens","mailo@gmail.com","wachtwoord");
             User dinos = new User("dinodelarue","maili@gmail.com","wachtwoord");
+            User kurt = new User("kurt","kurt@gmail.com","wachtwoord");
+
+
 
             BJ.setRoles(Arrays.asList(roleRepository.findByName("ROLE_STUDENT")));
             geert.setRoles(Arrays.asList(roleRepository.findByName("ROLE_PROMOTOR")));
             dinos.setRoles(Arrays.asList(roleRepository.findByName("ROLE_COORDINATOR")));
-
+            kurt.setRoles(Arrays.asList(roleRepository.findByName("ROLE_BEDRIJF")));
 
             BJ.setSubjects(Arrays.asList(subjectRepository.findByName("vroemvroem")));
             geert.setSubjects(Arrays.asList(subjectRepository.findByName("vroemvroem")));
@@ -63,8 +66,11 @@ public class UserConfig {
             } catch (EmailExists e) {
                 e.printStackTrace();
             }
-
-
+            try {
+                userController.addNewPerson(kurt);
+            } catch (EmailExists e) {
+                e.printStackTrace();
+            }
         };
     }}
 

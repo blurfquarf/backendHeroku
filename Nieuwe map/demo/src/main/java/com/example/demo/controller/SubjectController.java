@@ -49,7 +49,6 @@ public class SubjectController {
         subjectService.setCopros(copromail, subjectName);
     }
 
-
     @PutMapping("/approved")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public void approved(@RequestParam String subjectName){
@@ -67,8 +66,5 @@ public class SubjectController {
     public void reedsGGK(@RequestParam String subjectName){
         subjectService.setRGGK(subjectName);
     }
-
-
-
 
 }
