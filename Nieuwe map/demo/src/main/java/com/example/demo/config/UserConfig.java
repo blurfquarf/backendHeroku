@@ -34,8 +34,6 @@ public class UserConfig {
             User dinos = new User("dinodelarue","maili@gmail.com","wachtwoord");
             User kurt = new User("kurt","kurt@gmail.com","wachtwoord");
 
-
-
             BJ.setRoles(Arrays.asList(roleRepository.findByName("ROLE_STUDENT")));
             geert.setRoles(Arrays.asList(roleRepository.findByName("ROLE_PROMOTOR")));
             dinos.setRoles(Arrays.asList(roleRepository.findByName("ROLE_COORDINATOR")));
@@ -44,11 +42,12 @@ public class UserConfig {
             BJ.setSubjects(Arrays.asList(subjectRepository.findByName("vroemvroem")));
             geert.setSubjects(Arrays.asList(subjectRepository.findByName("vroemvroem")));
             dinos.setSubjects(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
+            kurt.setSubjects(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
 
             BJ.setCampus("Gent");
             geert.setCampus("Kortrijk");
             dinos.setCampus("Aalst");
-
+            kurt.setCampus("Gent");
             try {
                 userController.addNewPerson(BJ);
             } catch (EmailExists e) {
