@@ -95,7 +95,7 @@ public class Subject {
         this.approved = false;
     }
 
-    public Subject(String name, String description, boolean approved, boolean reedsGoedgekeurd,
+    public Subject(String name, String description, boolean reedsGoedgekeurd,
                    List<Campus> campussen, List<User> copromotoren, List<Opleiding> opleidingen) {
         this.name = name;
         this.description = description;
