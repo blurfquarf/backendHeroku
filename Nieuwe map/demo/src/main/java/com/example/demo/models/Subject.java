@@ -36,7 +36,7 @@ public class Subject {
     }
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(	name = "campus_subject",
+    @JoinTable(	name = "subject_opleiding",
             joinColumns = @JoinColumn(name = "subject_id"),
             inverseJoinColumns = @JoinColumn(name = "opleiding_id"))
     private List<Opleiding> opleidingen = new ArrayList<Opleiding>();

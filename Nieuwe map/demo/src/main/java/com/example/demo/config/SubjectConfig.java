@@ -3,6 +3,7 @@ package com.example.demo.config;
 import com.example.demo.models.Campus;
 import com.example.demo.models.Subject;
 import com.example.demo.repository.CampusRepository;
+import com.example.demo.repository.OpleidingsRepository;
 import com.example.demo.repository.SubjectRepository;
 import com.example.demo.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -15,7 +16,8 @@ import java.util.List;
 public class SubjectConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner2(SubjectRepository repository, UserRepository userRepository, CampusRepository campusRepository){
+    CommandLineRunner commandLineRunner2(SubjectRepository repository, UserRepository userRepository,
+                                         CampusRepository campusRepository, OpleidingsRepository opleidingsRepository){
         return args -> {
 
             Campus G = new Campus("Gent");
@@ -35,6 +37,11 @@ public class SubjectConfig {
             dinos.addToCampussen(campusRepository.findByName("Brugge"));
 
 
+/*
+
+            dinos.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("ELICT")));
+
+*/
 
             taartenBakken.setReedsGoedgekeurd();
 /*
