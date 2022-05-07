@@ -78,7 +78,18 @@ public class Subject {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.approved = approved;
+        this.approved = false;
+    }
+
+    public Subject(String name, String description, boolean approved, boolean reedsGoedgekeurd,
+                   List<Campus> campussen, List<User> copromotoren) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.approved = false;
+        this.campussen = campussen;
+        this.reedsGoedgekeurd = reedsGoedgekeurd;
+        this.copromotoren = copromotoren;
     }
 
     public Subject(String name, String description, boolean approved) {
