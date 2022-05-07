@@ -56,6 +56,19 @@ public class User {
     private String keuze2;
     private String keuze3;
 
+
+    @ManyToOne
+    @JoinColumn(name = "opleiding_id")
+    private Opleiding opleiding;
+
+    public void setOpleiding(Opleiding opleiding){
+        this.opleiding = opleiding;
+    }
+
+    public Opleiding getOpleiding() {
+        return opleiding;
+    }
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -308,6 +321,8 @@ public class User {
             return null;
         }
     };
+
+
 
 
     public User() {

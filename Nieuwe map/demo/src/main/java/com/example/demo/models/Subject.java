@@ -27,6 +27,20 @@ public class Subject {
 
     private boolean reedsGoedgekeurd;
 
+    public List<Opleiding> getOpleidingen() {
+        return opleidingen;
+    }
+
+    public void setOpleidingen(List<Opleiding> opleidingen) {
+        this.opleidingen = opleidingen;
+    }
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(	name = "campus_subject",
+            joinColumns = @JoinColumn(name = "subject_id"),
+            inverseJoinColumns = @JoinColumn(name = "opleiding_id"))
+    private List<Opleiding> opleidingen = new ArrayList<Opleiding>();
+
     public List<Campus> getCampussen() {
         return campussen;
     }
@@ -82,13 +96,14 @@ public class Subject {
     }
 
     public Subject(String name, String description, boolean approved, boolean reedsGoedgekeurd,
-                   List<Campus> campussen, List<User> copromotoren) {
+                   List<Campus> campussen, List<User> copromotoren, List<Opleiding> opleidingen) {
         this.name = name;
         this.description = description;
         this.approved = false;
         this.campussen = campussen;
         this.reedsGoedgekeurd = reedsGoedgekeurd;
         this.copromotoren = copromotoren;
+        this.opleidingen = opleidingen;
     }
 
     public Subject(String name, String description, boolean approved) {

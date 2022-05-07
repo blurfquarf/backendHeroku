@@ -25,7 +25,11 @@ public class UserConfig {
     }
 
     @Bean
-    CommandLineRunner commandLineRunner1(UserRepository userRepository, RoleRepository roleRepository, UserController userController, SubjectRepository subjectRepository) {
+    CommandLineRunner commandLineRunner1(UserRepository userRepository,
+                                         RoleRepository roleRepository,
+                                         UserController userController,
+                                         SubjectRepository subjectRepository,
+                                         OpleidingsRepository opleidingsRepository) {
         return args -> {
 
 
@@ -48,6 +52,20 @@ public class UserConfig {
             geert.setCampus("Kortrijk");
             dinos.setCampus("Aalst");
             kurt.setCampus("Gent");
+
+            Opleiding elict = new Opleiding("ELICT");
+            Opleiding ned = new Opleiding("Nederlands");
+            opleidingsRepository.saveAll(List.of(elict, ned));
+
+
+
+            BJ.setOpleiding(opleidingsRepository.findByName("ELICT"));
+            geert.setOpleiding(opleidingsRepository.findByName("ELICT"));
+            dinos.setOpleiding(opleidingsRepository.findByName("Nederlands"));
+            kurt.setOpleiding(opleidingsRepository.findByName("ELICT"));
+
+
+
             try {
                 userController.addNewPerson(BJ);
             } catch (EmailExists e) {
