@@ -83,7 +83,6 @@ public class Subject {
 
     public Subject(String name, String description, boolean approved, boolean reedsGoedgekeurd,
                    List<Campus> campussen, List<User> copromotoren) {
-        this.id = id;
         this.name = name;
         this.description = description;
         this.approved = false;
