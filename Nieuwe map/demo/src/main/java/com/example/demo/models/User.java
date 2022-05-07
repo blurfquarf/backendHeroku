@@ -28,20 +28,33 @@ public class User {
 
     private String campus;
 
-  public List<Subject> getKeuzes() {
-        return keuzes;
+    public String getKeuze1() {
+        return keuze1;
     }
 
-    public void setKeuzes(List<Subject> keuzes) {
-        this.keuzes = keuzes;
+    public void setKeuze1(String keuze1) {
+        this.keuze1 = keuze1;
     }
 
+    public String getKeuze2() {
+        return keuze2;
+    }
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(	name = "student_keuzes",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "subject_id"))
-    private List<Subject> keuzes = new ArrayList<Subject>();
+    public void setKeuze2(String keuze2) {
+        this.keuze2 = keuze2;
+    }
+
+    public String getKeuze3() {
+        return keuze3;
+    }
+
+    public void setKeuze3(String keuze3) {
+        this.keuze3 = keuze3;
+    }
+
+    private String keuze1;
+    private String keuze2;
+    private String keuze3;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "user_roles",

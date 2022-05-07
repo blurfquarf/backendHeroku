@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -131,4 +132,21 @@ public class UserService {
         }
         return pros;
     }
+
+    public void setK1(String keuze1, String studentMail){
+        User u = userRepository.findByEmail(studentMail);
+        u.setKeuze1(keuze1);
+    }
+
+    public void setK2(String keuze2, String studentMail){
+        User u = userRepository.findByEmail(studentMail);
+        u.setKeuze2(keuze2);
+    }
+
+    public void setK3(String keuze3, String studentMail){
+        User u = userRepository.findByEmail(studentMail);
+        u.setKeuze3(keuze3);
+    }
+
+
 }

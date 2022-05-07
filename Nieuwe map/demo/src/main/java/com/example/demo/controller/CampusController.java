@@ -11,10 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "api/v1/campus")
 public class CampusController {
-
-
     private final CampusService campusService;
-
 
     @Autowired
     public CampusController(CampusService campusService) {

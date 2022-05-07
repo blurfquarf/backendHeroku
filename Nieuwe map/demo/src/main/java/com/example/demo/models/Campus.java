@@ -11,15 +11,12 @@ public class Campus {
     private long id;
     private String name;
 
-
     public Campus(String n){
         this.name = n;
     }
 
     public Campus() {
-
     }
-
 
     public String getName() {
         return name;
