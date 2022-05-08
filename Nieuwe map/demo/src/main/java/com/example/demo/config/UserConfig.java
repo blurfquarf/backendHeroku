@@ -14,8 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.example.demo.models.ERole.ROLE_STUDENT;
-
 @Configuration
 public class UserConfig {
 
@@ -31,8 +29,6 @@ public class UserConfig {
                                          SubjectRepository subjectRepository,
                                          OpleidingsRepository opleidingsRepository) {
         return args -> {
-
-
             User BJ = new User("BerendJaap","berend@gmail.com","wachtwoord");
             User geert = new User("GeertGoossens","mailo@gmail.com","wachtwoord");
             User dinos = new User("dinodelarue","maili@gmail.com","wachtwoord");
@@ -43,8 +39,8 @@ public class UserConfig {
             dinos.setRoles(Arrays.asList(roleRepository.findByName("ROLE_COORDINATOR")));
             kurt.setRoles(Arrays.asList(roleRepository.findByName("ROLE_BEDRIJF")));
 
-            BJ.setSubjects(Arrays.asList(subjectRepository.findByName("vroemvroem")));
-            geert.setSubjects(Arrays.asList(subjectRepository.findByName("vroemvroem")));
+            BJ.setSubjects(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
+            geert.setSubjects(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
             dinos.setSubjects(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
             kurt.setSubjects(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
 
@@ -57,14 +53,10 @@ public class UserConfig {
             Opleiding ned = new Opleiding("Nederlands");
             opleidingsRepository.saveAll(List.of(elict, ned));
 
-
-
             BJ.setOpleiding(opleidingsRepository.findByName("ELICT"));
             geert.setOpleiding(opleidingsRepository.findByName("ELICT"));
             dinos.setOpleiding(opleidingsRepository.findByName("Nederlands"));
             kurt.setOpleiding(opleidingsRepository.findByName("ELICT"));
-
-
 
             try {
                 userController.addNewPerson(BJ);

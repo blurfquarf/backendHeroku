@@ -1,10 +1,7 @@
 package com.example.demo.config;
 
-import com.example.demo.models.ERole;
 import com.example.demo.models.Role;
-import com.example.demo.models.Subject;
 import com.example.demo.repository.RoleRepository;
-import com.example.demo.repository.SubjectRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

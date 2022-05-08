@@ -67,4 +67,21 @@ public class SubjectController {
         subjectService.setRGGK(subjectName);
     }
 
+    @GetMapping(value = "/keuze1")
+    public String getKeuze1(String mail) {
+        return subjectService.getK1(mail);
+    }
+
+    @GetMapping(value = "/keuze2")
+    public String getKeuze2(String mail) {
+        return subjectService.getK2(mail);
+    }
+
+    @GetMapping(value = "/keuze3")
+    public String getKeuze3(String mail) {
+        return subjectService.getK3(mail);
+    }
+
+
+
 }
