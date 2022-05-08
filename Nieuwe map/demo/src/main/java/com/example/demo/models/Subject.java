@@ -27,6 +27,8 @@ public class Subject {
 
     private boolean reedsGoedgekeurd;
 
+    private String bedrijf;
+
     public List<Opleiding> getOpleidingen() {
         return opleidingen;
     }
@@ -96,7 +98,7 @@ public class Subject {
     }
 
     public Subject(String name, String description, boolean reedsGoedgekeurd,
-                   List<Campus> campussen, List<User> copromotoren, List<Opleiding> opleidingen) {
+                   List<Campus> campussen, List<User> copromotoren, List<Opleiding> opleidingen, String bedrijf) {
         this.name = name;
         this.description = description;
         this.approved = false;
@@ -104,6 +106,7 @@ public class Subject {
         this.reedsGoedgekeurd = reedsGoedgekeurd;
         this.copromotoren = copromotoren;
         this.opleidingen = opleidingen;
+        this.bedrijf = bedrijf;
     }
 
     public Subject(String name, String description, boolean approved) {
