@@ -49,7 +49,7 @@ public class SubjectController {
         subjectService.setCopros(copromail, subjectName);
     }
 
-    @PostMapping("/approved")/////////////
+    @PostMapping("/approved")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public void approved(@RequestParam String subjectName){
         subjectService.setApproved(subjectName);
