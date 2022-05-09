@@ -2,10 +2,7 @@ package com.example.demo.config;
 
 import com.example.demo.checks.EmailExists;
 import com.example.demo.controller.UserController;
-import com.example.demo.models.Campus;
-import com.example.demo.models.Opleiding;
-import com.example.demo.models.Subject;
-import com.example.demo.models.User;
+import com.example.demo.models.*;
 import com.example.demo.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -30,6 +27,14 @@ public class MainConfig {
                                          SubjectRepository subjectRepository,
                                          UserController userController) {
         return args -> {
+
+            Role studentRole = new Role("ROLE_STUDENT");
+            Role promotorRole = new Role("ROLE_PROMOTOR");
+            Role coordinatorRole = new Role("ROLE_COORDINATOR");
+            Role bedrijfsV = new Role("ROLE_BEDRIJF");
+            //Role admin = new Role("ROLE_ADMIN");
+
+            roleRepository.saveAll(List.of(studentRole, promotorRole, coordinatorRole, bedrijfsV));
 
             User BJ = new User("BerendJaap","berend@gmail.com","wachtwoord");
             User geert = new User("GeertGoossens","mailo@gmail.com","wachtwoord");

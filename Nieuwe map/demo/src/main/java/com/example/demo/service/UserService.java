@@ -24,8 +24,12 @@ public class UserService {
     private final UserRepository userRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    private final SubjectRepository subjectRepository;
+
+    @Autowired
+    public UserService(UserRepository userRepository, SubjectRepository subjectRepository) {
         this.userRepository = userRepository;
+        this.subjectRepository = subjectRepository;
     }
 
     @Autowired
@@ -135,17 +139,20 @@ public class UserService {
 
     public void setK1(String keuze1, String studentMail){
         User u = userRepository.findByEmail(studentMail);
-        u.setKeuze1(keuze1);
+        Subject s = subjectRepository.findByName(keuze1);
+        u.setKeuze1(s);
     }
 
     public void setK2(String keuze2, String studentMail){
         User u = userRepository.findByEmail(studentMail);
-        u.setKeuze2(keuze2);
+        Subject s = subjectRepository.findByName(keuze2);
+        u.setKeuze2(s);
     }
 
     public void setK3(String keuze3, String studentMail){
         User u = userRepository.findByEmail(studentMail);
-        u.setKeuze3(keuze3);
+        Subject s = subjectRepository.findByName(keuze3);
+        u.setKeuze3(s);
     }
 
 

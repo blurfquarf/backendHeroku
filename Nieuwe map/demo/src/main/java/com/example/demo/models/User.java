@@ -28,33 +28,39 @@ public class User {
 
     private String campus;
 
-    public String getKeuze1() {
+    public Subject getKeuze1() {
         return keuze1;
     }
 
-    public void setKeuze1(String keuze1) {
+    public void setKeuze1(Subject keuze1) {
         this.keuze1 = keuze1;
     }
 
-    public String getKeuze2() {
+    public Subject getKeuze2() {
         return keuze2;
     }
 
-    public void setKeuze2(String keuze2) {
+    public void setKeuze2(Subject keuze2) {
         this.keuze2 = keuze2;
     }
 
-    public String getKeuze3() {
+    public Subject getKeuze3() {
         return keuze3;
     }
 
-    public void setKeuze3(String keuze3) {
+    public void setKeuze3(Subject keuze3) {
         this.keuze3 = keuze3;
     }
 
-    private String keuze1;
-    private String keuze2;
-    private String keuze3;
+    @ManyToOne
+    @JoinColumn(name = "keuze_1_id")
+    private Subject keuze1;
+    @ManyToOne
+    @JoinColumn(name = "keuze_2_id")
+    private Subject keuze2;
+    @ManyToOne
+    @JoinColumn(name = "keuze_3_id")
+    private Subject keuze3;
 
 
     @ManyToOne

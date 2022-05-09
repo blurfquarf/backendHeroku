@@ -77,16 +77,16 @@ public class SubjectService {
         s.setReedsGoedgekeurd();
     }
 
-    public String getK1(String mail) {
+    public Subject getK1(String mail) {
         User u = userRepository.findByEmail(mail);
         return u.getKeuze1();
     }
 
-    public String getK2(String mail) {
+    public Subject getK2(String mail) {
         User u = userRepository.findByEmail(mail);
         return u.getKeuze2();
     }
-    public String getK3(String mail) {
+    public Subject getK3(String mail) {
         User u = userRepository.findByEmail(mail);
         return u.getKeuze3();
     }

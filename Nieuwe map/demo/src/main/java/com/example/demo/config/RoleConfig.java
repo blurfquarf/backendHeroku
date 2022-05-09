@@ -1,4 +1,4 @@
-package com.example.demo.config;
+/*package com.example.demo.config;
 
 import com.example.demo.models.Role;
 import com.example.demo.repository.RoleRepository;
@@ -23,7 +23,7 @@ public class RoleConfig {
             roleRepository.saveAll(List.of(studentRole, promotorRole, coordinatorRole, bedrijfsV));
         };
     }
-}
+}*/
 
 
 
