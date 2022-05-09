@@ -37,31 +37,31 @@ public class SubjectController {
         subjectService.deleteSubject(subjectId);
     }
 
-    @PutMapping("/pro")
+    @PostMapping("/pro")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public void promotor(@RequestParam String subjectName, @RequestParam String mail){
         subjectService.changePromotor(subjectName, mail);
     }
 
-    @PutMapping("/copro")
+    @PostMapping("/copro")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public void copromotoren(@RequestParam List<String> copromail, @RequestParam String subjectName){
         subjectService.setCopros(copromail, subjectName);
     }
 
-    @PutMapping("/approved")
+    @PostMapping("/approved")/////////////
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public void approved(@RequestParam String subjectName){
         subjectService.setApproved(subjectName);
     }
 
-    @PutMapping("/campus")
+    @PostMapping("/campus")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public void campus(@RequestParam List<String> campussen, @RequestParam String subject){
         subjectService.setCampus(campussen, subject);
     }
 
-    @PutMapping("/reedsgoedgekeurd")
+    @PostMapping("/reedsgoedgekeurd")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public void reedsGGK(@RequestParam String subjectName){
         subjectService.setRGGK(subjectName);

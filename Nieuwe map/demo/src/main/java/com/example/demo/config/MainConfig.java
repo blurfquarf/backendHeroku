@@ -108,7 +108,6 @@ public class MainConfig {
 
             taartenBakken.setReedsGoedgekeurd();
 /*
-
             taartenBakken.setPromotor(userRepository.findByUsername("GeertGoossens"));
             nanobots.setPromotor(userRepository.findByUsername("GeertGoossens"));
             dinos.setPromotor(userRepository.findByUsername("GeertGoossens"));

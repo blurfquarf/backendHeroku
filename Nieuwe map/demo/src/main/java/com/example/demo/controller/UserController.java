@@ -38,19 +38,19 @@ public class UserController {
         return userService.getPros();
     }
 
-    @PutMapping("/keuze1")
+    @PostMapping("/keuze1")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public void k1(@RequestParam String keuze1, @RequestParam String studentMail){
         userService.setK1(keuze1, studentMail);
     }
 
-    @PutMapping("/keuze2")
+    @PostMapping("/keuze2")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public void k2(@RequestParam String keuze2, @RequestParam String studentMail){
         userService.setK2(keuze2, studentMail);
     }
 
-    @PutMapping("/keuze3")
+    @PostMapping("/keuze3")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public void k3(@RequestParam String keuze3, @RequestParam String studentMail){
         userService.setK3(keuze3, studentMail);
