@@ -97,14 +97,14 @@ public class Subject {
         this.approved = false;
     }
 
-    public Subject(String name, String description, boolean reedsGoedgekeurd,
+    public Subject(String name, String description,
                    List<Campus> campussen, List<User> copromotoren, List<Opleiding> opleidingen, String bedrijf,
                    User promotor) {
         this.name = name;
         this.description = description;
         this.approved = false;
         this.campussen = campussen;
-        this.reedsGoedgekeurd = reedsGoedgekeurd;
+        this.reedsGoedgekeurd = false;
         this.copromotoren = copromotoren;
         this.opleidingen = opleidingen;
         this.bedrijf = bedrijf;
