@@ -81,7 +81,4 @@ public class SubjectController {
     public String getKeuze3(String mail) {
         return subjectService.getK3(mail);
     }
-
-
-
 }

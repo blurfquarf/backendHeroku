@@ -98,7 +98,7 @@ public class Subject {
     }
 
     public Subject(String name, String description,
-                   List<Campus> campussen, List<User> copromotoren, List<Opleiding> opleidingen, String bedrijf,
+                   List<Campus> campussen, List<User> copromotoren, String bedrijf,
                    User promotor) {
         this.name = name;
         this.description = description;
@@ -106,7 +106,6 @@ public class Subject {
         this.campussen = campussen;
         this.reedsGoedgekeurd = false;
         this.copromotoren = copromotoren;
-        this.opleidingen = opleidingen;
         this.bedrijf = bedrijf;
         this.promotor = promotor;
     }
