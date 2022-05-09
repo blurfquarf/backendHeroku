@@ -61,6 +61,7 @@ public class SubjectService {
     public void setApproved(String subjectName) {
         Subject s = subjectRepository.findByName(subjectName);
         s.setApproved();
+        s.setReedsGoedgekeurd();
     }
 
     public void setCampus(List<String> campussen, String subject) {
