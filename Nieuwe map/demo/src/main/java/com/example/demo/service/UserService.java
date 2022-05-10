@@ -196,6 +196,8 @@ public class UserService {
         Subject s = subjectRepository.findByName(subjectName);
         User u = userRepository.findByEmail(studentMail);
         u.setSubject(s);
+        u.setHeeftDefinitiefOnderwerp();
+        s.setNietMeerBeschikbaar();
     }
 
     public void setBoost(String subjectName, String studentMail) {

@@ -26,6 +26,14 @@ public class User {
     @Size(max = 120)
     private String password;
 
+
+
+    public void setHeeftDefinitiefOnderwerp() {
+        heeftDefinitiefOnderwerp = true;
+    }
+
+    private boolean heeftDefinitiefOnderwerp;
+
     @ManyToOne
     @JoinColumn(name = "campus_id")
     private Campus campus;

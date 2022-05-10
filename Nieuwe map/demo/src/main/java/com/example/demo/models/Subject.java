@@ -29,6 +29,13 @@ public class Subject {
 
     private String bedrijf;
 
+
+    public void setNietMeerBeschikbaar(){
+        nietMeerBeschikbaar = true;
+    }
+
+    private boolean nietMeerBeschikbaar;
+
     public List<Opleiding> getOpleidingen() {
         return opleidingen;
     }
@@ -73,6 +80,9 @@ public class Subject {
     public void addToCopros(User u){
         copromotoren.add(u);
     }
+
+
+
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "copromotor_subj",
