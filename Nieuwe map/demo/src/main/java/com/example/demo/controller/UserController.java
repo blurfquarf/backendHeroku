@@ -69,6 +69,7 @@ public class UserController {
         return userService.getCampus(mail);
     }
 
+    //opleidingGet
     @GetMapping(value = "/opleiding")
     public Opleiding getOpleiding(@RequestParam String mail) {
         return userService.getOpleiding(mail);

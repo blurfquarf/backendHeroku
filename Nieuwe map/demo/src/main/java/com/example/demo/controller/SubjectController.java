@@ -68,26 +68,32 @@ public class SubjectController {
     }
 
     @GetMapping(value = "/keuze1")
-    public Subject getKeuze1(String mail) {
+    public Subject getKeuze1(@RequestParam  String mail) {
         return subjectService.getK1(mail);
     }
 
     @GetMapping(value = "/keuze2")
-    public Subject getKeuze2(String mail) {
+    public Subject getKeuze2(@RequestParam String mail) {
         return subjectService.getK2(mail);
     }
 
     @GetMapping(value = "/keuze3")
-    public Subject getKeuze3(String mail) {
+    public Subject getKeuze3(@RequestParam String mail) {
         return subjectService.getK3(mail);
     }
 
 
     //per promotor alle subjects
     @GetMapping(value = "/subjectsprom")
-    public List<Subject> getSperPro(String mail) {
+    public List<Subject> getSperPro(@RequestParam String mail) {
         return subjectService.getSperPro(mail);
     }
+
+    @GetMapping(value = "/targetsubjects")
+    public List<Subject> getTargetSubjects(@RequestParam String mail){
+        return subjectService.getTargetSubjects(mail);
+    }
+
 
 
 

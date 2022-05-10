@@ -103,4 +103,17 @@ public class SubjectService {
         }
         return perPromotor;
     }
+
+    public List<Subject> getTargetSubjects(String mail){
+        User u = userRepository.findByEmail(mail);
+        List<Subject> resultList = new ArrayList<>();
+        List<Subject> allSubjects = subjectRepository.findAll();
+
+        for (int i = 0; i < allSubjects.size(); i ++){
+            if (allSubjects.get(i).getOpleidingen().contains(u.getOpleiding()) && allSubjects.get(i).getCampussen().contains(u.getCampus())){
+                resultList.add(allSubjects.get(i));
+            }
+        }
+        return resultList;
+    }
 }
