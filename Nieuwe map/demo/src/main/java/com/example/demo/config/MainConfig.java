@@ -40,30 +40,43 @@ public class MainConfig {
             User geert = new User("GeertGoossens","mailo@gmail.com","wachtwoord");
             User dinos = new User("dinodelarue","maili@gmail.com","wachtwoord");
             User kurt = new User("kurt","kurt@gmail.com","wachtwoord");
+            User dwight = new User("dwight","dwight@gmail.com","wachtwoord");
 
             BJ.setRoles(Arrays.asList(roleRepository.findByName("ROLE_STUDENT")));
             geert.setRoles(Arrays.asList(roleRepository.findByName("ROLE_PROMOTOR")));
+            dwight.setRoles(Arrays.asList(roleRepository.findByName("ROLE_PROMOTOR")));
             dinos.setRoles(Arrays.asList(roleRepository.findByName("ROLE_COORDINATOR")));
             kurt.setRoles(Arrays.asList(roleRepository.findByName("ROLE_BEDRIJF")));
+
 
             BJ.setSubjects(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
             geert.setSubjects(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
             dinos.setSubjects(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
             kurt.setSubjects(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
-
-            BJ.setCampus("Gent");
-            geert.setCampus("Kortrijk");
-            dinos.setCampus("Aalst");
-            kurt.setCampus("Gent");
+            dwight.setSubjects(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
 
             Opleiding elict = new Opleiding("ELICT");
             Opleiding ned = new Opleiding("Nederlands");
             opleidingsRepository.saveAll(List.of(elict, ned));
 
+            Campus G = new Campus("Gent");
+            Campus B = new Campus("Brugge");
+            Campus C = new Campus("Aalst");
+
+            campusRepository.saveAll(List.of(G, B, C));
+
             BJ.setOpleiding(opleidingsRepository.findByName("ELICT"));
             geert.setOpleiding(opleidingsRepository.findByName("ELICT"));
             dinos.setOpleiding(opleidingsRepository.findByName("Nederlands"));
             kurt.setOpleiding(opleidingsRepository.findByName("ELICT"));
+            dwight.setOpleiding(opleidingsRepository.findByName("ELICT"));
+
+            BJ.setCampus(campusRepository.findByName("Gent"));
+            geert.setCampus(campusRepository.findByName("Aalst"));
+            dinos.setCampus(campusRepository.findByName("Gent"));
+            kurt.setCampus(campusRepository.findByName("Brugge"));
+            dwight.setCampus(campusRepository.findByName("Gent"));
+
 
             try {
                 userController.addNewPerson(BJ);
@@ -87,11 +100,12 @@ public class MainConfig {
             } catch (EmailExists e) {
                 e.printStackTrace();
             }
+            try {
+                userController.addNewPerson(dwight);
+            } catch (EmailExists e) {
+                e.printStackTrace();
+            }
 
-            Campus G = new Campus("Gent");
-            Campus B = new Campus("Brugge");
-
-            campusRepository.saveAll(List.of(G, B));
 
             Subject taartenBakken = new Subject("Taarten bakken", "sssss", true);
 
@@ -106,12 +120,11 @@ public class MainConfig {
             nanobots.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("ELICT"), opleidingsRepository.findByName("Nederlands")));
             taartenBakken.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("Nederlands")));
 
+            dinoos.setCampussen(Arrays.asList(campusRepository.findByName("Gent")));
+            nanobots.setCampussen(Arrays.asList(campusRepository.findByName("Aalst")));
+            taartenBakken.setCampussen(Arrays.asList(campusRepository.findByName("Brugge")));
+
             taartenBakken.setReedsGoedgekeurd();
-/*
-            taartenBakken.setPromotor(userRepository.findByUsername("GeertGoossens"));
-            nanobots.setPromotor(userRepository.findByUsername("GeertGoossens"));
-            dinos.setPromotor(userRepository.findByUsername("GeertGoossens"));
-*/
 
             repository.saveAll(
                     List.of(taartenBakken, nanobots, dinoos)

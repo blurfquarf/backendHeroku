@@ -26,7 +26,9 @@ public class User {
     @Size(max = 120)
     private String password;
 
-    private String campus;
+    @ManyToOne
+    @JoinColumn(name = "campus_id")
+    private Campus campus;
 
     public Subject getKeuze1() {
         return keuze1;
@@ -374,11 +376,11 @@ public class User {
     }
     public void setSubjects(List<Subject> subjects){this.subjects = subjects;}
 
-    public String getCampus() {
+    public Campus getCampus() {
         return campus;
     }
 
-    public void setCampus(String campus) {
+    public void setCampus(Campus campus) {
         this.campus = campus;
     }
 }

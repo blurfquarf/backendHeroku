@@ -18,6 +18,18 @@ public class Opleiding {
     @Column
     private String name;
 
+/*    @ManyToOne
+    @JoinColumn(name = "coordinator_id")
+    private User coordinator;
+
+    public User getCoordinator() {
+        return coordinator;
+    }
+
+    public void setCoordinator(User user) {
+        this.coordinator = user;
+    }*/
+
     public Long getId() {
         return id;
     }

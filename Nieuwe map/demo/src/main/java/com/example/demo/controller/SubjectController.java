@@ -27,7 +27,7 @@ public class SubjectController {
 
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     @PostMapping
-    public void registerNewSubject(@Valid @RequestBody Subject subject){
+    public void registerNewSubject(@RequestBody Subject subject){
         subjectService.addNewSubject(subject);
     }
 
