@@ -65,8 +65,6 @@ public class UserController {
         userService.setK3(keuze3, studentMail);
     }
 
-
-
     //studenten per subject
     @GetMapping(value = "/studentenpersubkeuze")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")

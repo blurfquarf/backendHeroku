@@ -34,6 +34,10 @@ public class Subject {
         nietMeerBeschikbaar = true;
     }
 
+    public boolean getNietMeerBeschikbaar(){
+        return nietMeerBeschikbaar;
+    }
+
     private boolean nietMeerBeschikbaar;
 
     public List<Opleiding> getOpleidingen() {
