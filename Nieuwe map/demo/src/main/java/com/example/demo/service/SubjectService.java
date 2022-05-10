@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -89,5 +90,17 @@ public class SubjectService {
     public Subject getK3(String mail) {
         User u = userRepository.findByEmail(mail);
         return u.getKeuze3();
+    }
+
+    public List<Subject> getSperPro(String mail){
+        User promotor = userRepository.findByEmail(mail);
+        List<Subject> subs = subjectRepository.findAll();
+        List<Subject> perPromotor = new ArrayList<>();
+        for(int i = 0; i < subs.size(); i ++){
+            if(subs.get(i).getPromotor() == promotor){
+                perPromotor.add(subs.get(i));
+            }
+        }
+        return perPromotor;
     }
 }

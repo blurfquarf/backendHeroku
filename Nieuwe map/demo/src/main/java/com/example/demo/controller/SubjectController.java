@@ -81,4 +81,12 @@ public class SubjectController {
     public Subject getKeuze3(String mail) {
         return subjectService.getK3(mail);
     }
+
+
+    //per promotor alle subjects
+    @GetMapping(value = "/subjectsprom")
+    public List<Subject> getSperPro(String mail) {
+        return subjectService.getSperPro(mail);
+    }
+
 }
