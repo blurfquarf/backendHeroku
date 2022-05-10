@@ -126,6 +126,8 @@ public class MainConfig {
 
             taartenBakken.setReedsGoedgekeurd();
 
+
+
             repository.saveAll(
                     List.of(taartenBakken, nanobots, dinoos)
             );

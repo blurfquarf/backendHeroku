@@ -57,12 +57,21 @@ public class UserController {
         userService.setK3(keuze3, studentMail);
     }
 
-
     //studenten per subject
     @GetMapping(value = "/studentenpersubkeuze")
     public Map<Integer, User> getSperSub(@RequestParam String subjectName) {
         return userService.getSperSub(subjectName);
     }
 
+    //campusGet
+    @GetMapping(value = "/campus")
+    public Campus getCampus(@RequestParam String mail) {
+        return userService.getCampus(mail);
+    }
+
+    @GetMapping(value = "/opleiding")
+    public Opleiding getOpleiding(@RequestParam String mail) {
+        return userService.getOpleiding(mail);
+    }
 
 }

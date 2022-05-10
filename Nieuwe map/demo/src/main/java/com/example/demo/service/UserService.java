@@ -171,5 +171,13 @@ public class UserService {
         return userMetKeuze;
     }
 
+    public Campus getCampus(String mail){
+        User u = userRepository.findByEmail(mail);
+        return u.getCampus();
+    }
 
+    public Opleiding getOpleiding(String mail){
+        User u = userRepository.findByEmail(mail);
+        return u.getOpleiding();
+    }
 }
