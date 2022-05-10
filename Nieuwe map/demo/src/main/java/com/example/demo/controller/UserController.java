@@ -6,6 +6,7 @@ import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(path = "api/v1/person")
@@ -59,7 +60,7 @@ public class UserController {
 
     //studenten per subject
     @GetMapping(value = "/studentenpersubkeuze")
-    public List<User> getSperSub(@RequestParam String subjectName) {
+    public Map<Integer, User> getSperSub(@RequestParam String subjectName) {
         return userService.getSperSub(subjectName);
     }
 

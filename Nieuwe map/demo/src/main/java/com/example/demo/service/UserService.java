@@ -10,10 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @Transactional
@@ -155,16 +152,20 @@ public class UserService {
         u.setKeuze3(s);
     }
 
-    public List<User> getSperSub(String subjectName){
+    public Map<Integer, User> getSperSub(String subjectName){
         Subject s = subjectRepository.findByName(subjectName);
         List<User> users = userRepository.findAll();
-        List<User> userMetKeuze = new ArrayList<>();
-
+        Map<Integer, User> userMetKeuze = new HashMap<>();
 
         for(int i = 0; i < users.size(); i ++){
-            if(s == users.get(i).getKeuze1() || s == users.get(i).getKeuze2()
-                    || s == users.get(i).getKeuze3()){
-                userMetKeuze.add(users.get(i));
+            if(s == users.get(i).getKeuze1()) {
+                userMetKeuze.put(1, users.get(i));
+            }
+            else if(s == users.get(i).getKeuze2()) {
+                userMetKeuze.put(2, users.get(i));
+            }
+            else if(s == users.get(i).getKeuze3()) {
+                userMetKeuze.put(3, users.get(i));
             }
         }
         return userMetKeuze;
