@@ -117,7 +117,7 @@ public class MainConfig {
 
             BJ.setOpleiding(opleidingsRepository.findByName("ELICT"));
             geert.setOpleiding(opleidingsRepository.findByName("ELICT"));
-            dinos.setOpleiding(opleidingsRepository.findByName("Nederlands"));
+            dinos.setOpleiding(opleidingsRepository.findByName("ELICT"));
             kurt.setOpleiding(opleidingsRepository.findByName("ELICT"));
             dwight.setOpleiding(opleidingsRepository.findByName("ELICT"));
             Kanye.setOpleiding(opleidingsRepository.findByName("Nederlands"));
