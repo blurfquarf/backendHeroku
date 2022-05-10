@@ -180,4 +180,16 @@ public class UserService {
         User u = userRepository.findByEmail(mail);
         return u.getOpleiding();
     }
+
+    public List<Subject> getSubsPerCoord(String mail){
+        User u = userRepository.findByEmail(mail);
+        List<Subject> targetSubjects = new ArrayList<>();
+        List<Subject> all = subjectRepository.findAll();
+        for(int i = 0; i < all.size(); i++){
+            if (all.get(i).getOpleidingen().contains(u.getOpleiding()) && all.get(i).getCampussen().contains(u.getCampus())){
+                targetSubjects.add(all.get(i));
+            }
+        }
+        return targetSubjects;
+    }
 }

@@ -68,16 +68,19 @@ public class SubjectController {
     }
 
     @GetMapping(value = "/keuze1")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public Subject getKeuze1(@RequestParam  String mail) {
         return subjectService.getK1(mail);
     }
 
     @GetMapping(value = "/keuze2")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public Subject getKeuze2(@RequestParam String mail) {
         return subjectService.getK2(mail);
     }
 
     @GetMapping(value = "/keuze3")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public Subject getKeuze3(@RequestParam String mail) {
         return subjectService.getK3(mail);
     }
@@ -85,16 +88,14 @@ public class SubjectController {
 
     //per promotor alle subjects
     @GetMapping(value = "/subjectsprom")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public List<Subject> getSperPro(@RequestParam String mail) {
         return subjectService.getSperPro(mail);
     }
 
     @GetMapping(value = "/targetsubjects")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public List<Subject> getTargetSubjects(@RequestParam String mail){
         return subjectService.getTargetSubjects(mail);
     }
-
-
-
-
 }

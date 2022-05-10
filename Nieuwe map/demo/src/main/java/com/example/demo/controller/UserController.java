@@ -59,20 +59,33 @@ public class UserController {
 
     //studenten per subject
     @GetMapping(value = "/studentenpersubkeuze")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public Map<Integer, User> getSperSub(@RequestParam String subjectName) {
         return userService.getSperSub(subjectName);
     }
 
     //campusGet
     @GetMapping(value = "/campus")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public Campus getCampus(@RequestParam String mail) {
         return userService.getCampus(mail);
     }
 
     //opleidingGet
     @GetMapping(value = "/opleiding")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public Opleiding getOpleiding(@RequestParam String mail) {
         return userService.getOpleiding(mail);
     }
+
+
+
+    //onderwerpen horend bij coordinator
+    @GetMapping(value = "/subsvoorcoord")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
+    public List<Subject> getSubsPerCoord(@RequestParam String mail) {
+        return userService.getSubsPerCoord(mail);
+    }
+
 
 }
