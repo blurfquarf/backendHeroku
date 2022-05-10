@@ -54,7 +54,6 @@ public class UserService {
                     "There is an account with that email adress:" + user.getEmail());
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        //user.setRoles((List<Role>) roleRepository.findByName("BEDRIJFSVERANTWOORDELIJKE"));
         userRepository.save(user);
     }
 /*

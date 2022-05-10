@@ -176,5 +176,6 @@ public class Subject {
 
     public void setReedsGoedgekeurd() {
         reedsGoedgekeurd = true;
+        approved = true;
     }
 }
