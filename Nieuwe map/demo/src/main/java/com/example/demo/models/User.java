@@ -200,6 +200,29 @@ public class User {
 
 
 
+
+    public List<Subject> getGeboostVoor() {
+        return geboostVoor;
+    }
+
+    public void setGeboostVoor(List<Subject> geboostVoor) {
+        this.geboostVoor = geboostVoor;
+    }
+
+    public void addBoost(Subject boost) {
+        geboostVoor.add(boost);
+    }
+
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(	name = "user_boostedonderwerp",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "subject_id"))
+    private List<Subject> geboostVoor = new ArrayList<>();
+
+
+
+
     @OneToOne
     @JoinColumn(name = "subject_id")
     private Subject subject;

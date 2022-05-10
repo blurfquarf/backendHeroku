@@ -116,4 +116,18 @@ public class SubjectService {
         }
         return resultList;
     }
+
+
+    //vraag per onderwerp geboosten op
+    public List<User> getBoosted(String subjectName) {
+        List<User> users = userRepository.findAll();
+        Subject s = subjectRepository.findByName(subjectName);
+        List<User> boosted = new ArrayList<>();
+        for(int i = 0; i < users.size(); i++){
+            if(users.get(i).getGeboostVoor().contains(s)){
+                boosted.add(users.get(i));
+            }
+        }
+        return boosted;
+    }
 }

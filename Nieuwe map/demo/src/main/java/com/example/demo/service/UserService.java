@@ -198,4 +198,9 @@ public class UserService {
         u.setSubject(s);
     }
 
+    public void setBoost(String subjectName, String studentMail) {
+        Subject s = subjectRepository.findByName(subjectName);
+        User u = userRepository.findByEmail(studentMail);
+        u.addBoost(s);
+    }
 }

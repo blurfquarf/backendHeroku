@@ -102,5 +102,14 @@ public class UserController {
         userService.setSubject(subjectName, studentMail);
     }
 
+    @PostMapping("/boost")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
+    public void boost(@RequestParam String subjectName, @RequestParam String studentMail){
+        userService.setBoost(subjectName, studentMail);
+    }
+
+
+
+
 
 }

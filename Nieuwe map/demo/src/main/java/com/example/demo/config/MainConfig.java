@@ -141,6 +141,20 @@ public class MainConfig {
             djef.setCampus(campusRepository.findByName("Gent"));
 
 
+            BJ.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
+            maxou.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
+            toon.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
+            matthieu.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
+            geert.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
+            dinos.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
+            kurt.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
+            dwight.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
+            Kanye.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
+            djef.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
+
+
+
+
             BJ.setKeuze1(subjectRepository.findByName("nog niet beslist"));
             BJ.setKeuze2(subjectRepository.findByName("nog niet beslist"));
             BJ.setKeuze3(subjectRepository.findByName("nog niet beslist"));
