@@ -103,16 +103,16 @@ public class MainConfig {
             );
 
 
-            BJ.setSubjects(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
-            maxou.setSubjects(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
-            toon.setSubjects(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
-            matthieu.setSubjects(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
-            geert.setSubjects(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
-            dinos.setSubjects(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
-            kurt.setSubjects(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
-            dwight.setSubjects(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
-            Kanye.setSubjects(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
-            djef.setSubjects(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
+            BJ.setSubject(subjectRepository.findByName("nog niet beslist"));
+            maxou.setSubject(subjectRepository.findByName("nog niet beslist"));
+            toon.setSubject(subjectRepository.findByName("nog niet beslist"));
+            matthieu.setSubject(subjectRepository.findByName("nog niet beslist"));
+            geert.setSubject(subjectRepository.findByName("nog niet beslist"));
+            dinos.setSubject(subjectRepository.findByName("nog niet beslist"));
+            kurt.setSubject(subjectRepository.findByName("nog niet beslist"));
+            dwight.setSubject(subjectRepository.findByName("nog niet beslist"));
+            Kanye.setSubject(subjectRepository.findByName("nog niet beslist"));
+            djef.setSubject(subjectRepository.findByName("nog niet beslist"));
 
 
             BJ.setOpleiding(opleidingsRepository.findByName("ELICT"));

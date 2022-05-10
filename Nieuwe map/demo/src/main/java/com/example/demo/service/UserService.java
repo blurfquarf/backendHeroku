@@ -191,4 +191,11 @@ public class UserService {
         }
         return targetSubjects;
     }
+
+    public void setSubject(String subjectName, String studentMail){
+        Subject s = subjectRepository.findByName(subjectName);
+        User u = userRepository.findByEmail(studentMail);
+        u.setSubject(s);
+    }
+
 }

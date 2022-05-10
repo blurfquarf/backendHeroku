@@ -57,6 +57,16 @@ public class UserController {
         userService.setK3(keuze3, studentMail);
     }
 
+    @PostMapping("/keuzes")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
+    public void k123(@RequestParam String keuze1, @RequestParam String keuze2, @RequestParam String keuze3, @RequestParam String studentMail){
+        userService.setK1(keuze1, studentMail);
+        userService.setK2(keuze2, studentMail);
+        userService.setK3(keuze3, studentMail);
+    }
+
+
+
     //studenten per subject
     @GetMapping(value = "/studentenpersubkeuze")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
@@ -79,12 +89,17 @@ public class UserController {
     }
 
 
-
     //onderwerpen horend bij coordinator
     @GetMapping(value = "/subsvoorcoord")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public List<Subject> getSubsPerCoord(@RequestParam String mail) {
         return userService.getSubsPerCoord(mail);
+    }
+
+    @PostMapping("/toewijzing")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
+    public void definitieveToewijzing(@RequestParam String subjectName, @RequestParam String studentMail){
+        userService.setSubject(subjectName, studentMail);
     }
 
 
