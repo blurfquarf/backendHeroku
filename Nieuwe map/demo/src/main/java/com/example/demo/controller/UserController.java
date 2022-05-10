@@ -57,8 +57,11 @@ public class UserController {
     }
 
 
-
-
+    //studenten per subject
+    @GetMapping(value = "/studentenpersubkeuze")
+    public List<User> getSperSub(@RequestParam String subjectName) {
+        return userService.getSperSub(subjectName);
+    }
 
 
 }

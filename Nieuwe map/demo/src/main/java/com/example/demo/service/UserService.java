@@ -155,5 +155,20 @@ public class UserService {
         u.setKeuze3(s);
     }
 
+    public List<User> getSperSub(String subjectName){
+        Subject s = subjectRepository.findByName(subjectName);
+        List<User> users = userRepository.findAll();
+        List<User> userMetKeuze = new ArrayList<>();
+
+
+        for(int i = 0; i < users.size(); i ++){
+            if(s == users.get(i).getKeuze1() || s == users.get(i).getKeuze2()
+                    || s == users.get(i).getKeuze3()){
+                userMetKeuze.add(users.get(i));
+            }
+        }
+        return userMetKeuze;
+    }
+
 
 }
