@@ -78,11 +78,11 @@ public class MainConfig {
 
 
             Subject taartenBakken = new Subject("Taarten bakken", "sssss", true);
-            Subject nanobots = new Subject("vroemvroem");
-            Subject dinoos = new Subject("nog niet beslist");
-            Subject n1 = new Subject("zinsbouw");
-            Subject n2 = new Subject("zinnen");
-            Subject n3 = new Subject("werkwoorden");
+            Subject nanobots = new Subject("vroemvroem", "ok dit is cool", false);
+            Subject dinoos = new Subject("nog niet beslist", "ok dit is cool", false);
+            Subject n1 = new Subject("zinsbouw", "ok dit is cool", true);
+            Subject n2 = new Subject("zinnen", "ok dit is cool", true);
+            Subject n3 = new Subject("werkwoorden", "ok dit is cool", true);
 
 
             dinoos.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("ELICT")));
@@ -101,7 +101,7 @@ public class MainConfig {
             n3.setCampussen(Arrays.asList(campusRepository.findByName("Gent")));
 
             taartenBakken.setReedsGoedgekeurd();
-            dinoos.setReedsGoedgekeurd();
+            //dinoos.setReedsGoedgekeurd();
             n1.setReedsGoedgekeurd();
             n2.setReedsGoedgekeurd();
             n3.setReedsGoedgekeurd();
