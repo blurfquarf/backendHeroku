@@ -5,6 +5,7 @@ import com.example.demo.controller.UserController;
 import com.example.demo.models.*;
 import com.example.demo.repository.*;
 import com.example.demo.service.SubjectService;
+import com.example.demo.service.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +27,9 @@ public class MainConfig {
                                          OpleidingsRepository opleidingsRepository,
                                          RoleRepository roleRepository,
                                          SubjectRepository subjectRepository,
-                                         UserController userController, SubjectService subjectService) {
+                                         UserController userController,
+                                         SubjectService subjectService,
+                                         UserService userService) {
         return args -> {
 
             Role studentRole = new Role("ROLE_STUDENT");
@@ -38,18 +41,18 @@ public class MainConfig {
 
 
             User BJ = new User("BerendJaap","berend@gmail.com","wachtwoord");
-            User geert = new User("GeertGoossens","mailo@gmail.com","wachtwoord");
-            User dinos = new User("dinodelarue","maili@gmail.com","wachtwoord");
+            User geert = new User("GeertGoossens","geert@gmail.com","wachtwoord");
+            User dinos = new User("dinodelarue","dino@gmail.com","wachtwoord");
             User kurt = new User("kurt","kurt@gmail.com","wachtwoord");
             User dwight = new User("dwight","dwight@gmail.com","wachtwoord");
             User Kanye = new User("Kanye","mrwest@gmail.com","wachtwoord");
-            User djef = new User("djef","djef@gmail.com","wachtwoord");
+            User djef = new User("Jef De Bakker","djef@gmail.com","wachtwoord");
             User maxou = new User("maxou","maxou@gmail.com","wachtwoord");
             User toon = new User("toon","toon@gmail.com","wachtwoord");
             User matthieu = new User("matthieu","matthieu@gmail.com","wachtwoord");
             User dirk = new User("dirk","dirk@gmail.com","wachtwoord");
 
-
+            User zorakthegreat = new User("zorak","zorak@gmail.com","wachtwoord");
 
 
 
@@ -64,6 +67,11 @@ public class MainConfig {
             Kanye.setRoles(Arrays.asList(roleRepository.findByName("ROLE_COORDINATOR")));
             djef.setRoles(Arrays.asList(roleRepository.findByName("ROLE_PROMOTOR")));
             dirk.setRoles(Arrays.asList(roleRepository.findByName("ROLE_PROMOTOR")));
+
+
+
+            zorakthegreat.setRoles(Arrays.asList(roleRepository.findByName("ROLE_STUDENT")));
+
 
 
             Opleiding elict = new Opleiding("ELICT");
@@ -85,12 +93,17 @@ public class MainConfig {
             Subject n3 = new Subject("werkwoorden", "ok dit is cool", true);
 
 
+            Subject zorak = new Subject("greatness", "Maxou Van Lauwe is definitie hiervoor", true);
+
+
             dinoos.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("ELICT")));
             nanobots.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("ELICT"), opleidingsRepository.findByName("Nederlands")));
             taartenBakken.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("Nederlands")));
             n1.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("Nederlands")));
             n2.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("Nederlands")));
             n3.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("Nederlands")));
+
+            zorak.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("ELICT")));
 
 
             dinoos.setCampussen(Arrays.asList(campusRepository.findByName("Gent")));
@@ -100,14 +113,19 @@ public class MainConfig {
             n2.setCampussen(Arrays.asList(campusRepository.findByName("Gent")));
             n3.setCampussen(Arrays.asList(campusRepository.findByName("Gent")));
 
+            zorak.setCampussen(Arrays.asList(campusRepository.findByName("Gent")));
+
+
+
             taartenBakken.setReedsGoedgekeurd();
             //dinoos.setReedsGoedgekeurd();
             n1.setReedsGoedgekeurd();
             n2.setReedsGoedgekeurd();
             n3.setReedsGoedgekeurd();
+            zorak.setReedsGoedgekeurd();
 
             repository.saveAll(
-                    List.of(taartenBakken, nanobots, dinoos, n1, n2, n3)
+                    List.of(taartenBakken, nanobots, dinoos, n1, n2, n3, zorak)
             );
 
 
@@ -122,6 +140,8 @@ public class MainConfig {
             Kanye.setSubject(subjectRepository.findByName("nog niet beslist"));
             djef.setSubject(subjectRepository.findByName("nog niet beslist"));
             dirk.setSubject(subjectRepository.findByName("nog niet beslist"));
+            zorakthegreat.setSubject(subjectRepository.findByName("nog niet beslist"));
+
 
 
 
@@ -138,6 +158,9 @@ public class MainConfig {
             djef.setOpleiding(opleidingsRepository.findByName("Nederlands"));
             dirk.setOpleiding(opleidingsRepository.findByName("Nederlands"));
 
+            zorakthegreat.setOpleiding(opleidingsRepository.findByName("ELICT"));
+
+
             BJ.setCampus(campusRepository.findByName("Gent"));
             maxou.setCampus(campusRepository.findByName("Gent"));
             toon.setCampus(campusRepository.findByName("Gent"));
@@ -149,6 +172,7 @@ public class MainConfig {
             Kanye.setCampus(campusRepository.findByName("Gent"));
             djef.setCampus(campusRepository.findByName("Gent"));
             dirk.setCampus(campusRepository.findByName("Aalst"));
+            zorakthegreat.setCampus(campusRepository.findByName("Gent"));
 
 
             BJ.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
@@ -163,6 +187,7 @@ public class MainConfig {
             djef.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
             dirk.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
 
+            zorakthegreat.setGeboostVoor(Arrays.asList(subjectRepository.findByName("greatness")));
 
 
             BJ.setKeuze1(subjectRepository.findByName("nog niet beslist"));
@@ -208,6 +233,10 @@ public class MainConfig {
             dirk.setKeuze1(subjectRepository.findByName("nog niet beslist"));
             dirk.setKeuze2(subjectRepository.findByName("nog niet beslist"));
             dirk.setKeuze3(subjectRepository.findByName("nog niet beslist"));
+
+            zorakthegreat.setKeuze1(subjectRepository.findByName("greatness"));
+            zorakthegreat.setKeuze2(subjectRepository.findByName("nog niet beslist"));
+            zorakthegreat.setKeuze3(subjectRepository.findByName("nog niet beslist"));
 
 
             try {
@@ -260,13 +289,21 @@ public class MainConfig {
             } catch (EmailExists e) {
                 e.printStackTrace();
             }
-
-
+            try {
+                userController.addNewPerson(zorakthegreat);
+            } catch (EmailExists e) {
+                e.printStackTrace();
+            }
 
             //promotor enkel bij richting van onderwerp te zien!!!!!!!!!!!
             subjectService.changePromotor("zinsbouw", "djef@gmail.com");
             subjectService.changePromotor("zinnen", "djef@gmail.com");
             subjectService.changePromotor("werkwoorden", "djef@gmail.com");
+            subjectService.changePromotor("greatness", "geert@gmail.com");
+
+
+            userService.setSubject("greatness", "zorak@gmail.com");
+
 
 
 
