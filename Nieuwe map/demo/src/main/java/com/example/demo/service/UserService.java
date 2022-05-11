@@ -208,4 +208,17 @@ public class UserService {
         User u = userRepository.findByEmail(studentMail);
         u.addBoost(s);
     }
+
+    public void setK123(String keuze1, String keuze2, String keuze3, String studentMail) {
+        Subject s1 = subjectRepository.findByName(keuze1);
+        Subject s2 = subjectRepository.findByName(keuze2);
+        Subject s3 = subjectRepository.findByName(keuze3);
+
+        User u = userRepository.findByEmail(studentMail);
+        u.setKeuze1(s1);
+        u.setKeuze2(s2);
+        u.setKeuze3(s3);
+
+    }
+
 }

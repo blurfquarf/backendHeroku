@@ -58,11 +58,9 @@ public class UserController {
     }
 
     @PostMapping("/keuzes")
-    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
-    public void k123(@RequestParam String keuze1, @RequestParam String keuze2, @RequestParam String keuze3, @RequestParam String studentMail){
-        userService.setK1(keuze1, studentMail);
-        userService.setK2(keuze2, studentMail);
-        userService.setK3(keuze3, studentMail);
+    @CrossOrigin(origins = {"https://localhost:3000", "http://localhost:3000"}, allowedHeaders = "*")
+    public void setK123(@RequestParam String keuze1, @RequestParam String keuze2, @RequestParam String keuze3, @RequestParam String studentMail){
+        userService.setK123(keuze1, keuze2, keuze3, studentMail);
     }
 
     //studenten per subject
