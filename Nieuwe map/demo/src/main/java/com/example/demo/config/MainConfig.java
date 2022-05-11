@@ -235,6 +235,7 @@ public class MainConfig {
             dirk.setKeuze3(subjectRepository.findByName("nog niet beslist"));
 
             zorakthegreat.setKeuze1(subjectRepository.findByName("greatness"));
+
             zorakthegreat.setKeuze2(subjectRepository.findByName("nog niet beslist"));
             zorakthegreat.setKeuze3(subjectRepository.findByName("nog niet beslist"));
 
@@ -304,6 +305,7 @@ public class MainConfig {
 
             userService.setSubject("greatness", "zorak@gmail.com");
 
+            subjectService.verhooggekozen("greatness");
 
 
 

@@ -67,10 +67,33 @@ public class UserController {
 
 
 
+    //studenten per subject BOOSTED
+    @GetMapping(value = "/boostedstud")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
+    public Map<Integer, User> getBoostedStudCoord(@RequestParam String subjectName) {
+        return userService.getBoostedStudCoord(subjectName);
+    }
+
+    //studenten per subject NONBOOSTED
+    @GetMapping(value = "/nonboostedstud")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
+    public Map<Integer, User> getNONBoostedStudCoord(@RequestParam String subjectName) {
+        return userService.getNONBoostedStudCoord(subjectName);
+    }
 
 
 
-    //studenten per subject
+
+
+
+
+
+
+
+
+
+
+    //studenten per subject voor promotor
     @GetMapping(value = "/studentenpersubkeuze")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public Map<Integer, User> getSperSub(@RequestParam String subjectName) {
@@ -108,12 +131,18 @@ public class UserController {
     }
 
 
+
+
+
     //onderwerpen horend bij coordinator
     @GetMapping(value = "/subsvoorcoord")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public List<Subject> getSubsPerCoord(@RequestParam String mail) {
         return userService.getSubsPerCoord(mail);
     }
+
+
+
 
     @PostMapping("/toewijzing")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")

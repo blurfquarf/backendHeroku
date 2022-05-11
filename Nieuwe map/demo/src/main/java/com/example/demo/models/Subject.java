@@ -30,6 +30,24 @@ public class Subject {
     private String bedrijf;
 
 
+    private Integer gekozen = 0;
+
+    public Integer getGekozen() {
+        return gekozen;
+    }
+
+
+
+    public void setGekozen(Integer gekozen) {
+        this.gekozen = gekozen;
+    }
+    public void gekozen() {
+        this.gekozen++;
+    }
+
+
+
+
     public void setNietMeerBeschikbaar(){
         nietMeerBeschikbaar = true;
     }

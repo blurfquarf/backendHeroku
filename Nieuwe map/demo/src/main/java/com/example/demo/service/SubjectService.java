@@ -148,4 +148,12 @@ public class SubjectService {
         }
         return boosted;
     }
+
+    public void verhooggekozen(String g){
+        Subject s = subjectRepository.findByName(g);
+        s.setGekozen(s.getGekozen()+1);
+    }
+
+
+
 }

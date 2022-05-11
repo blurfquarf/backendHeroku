@@ -212,8 +212,14 @@ public class UserService {
 
     public void setK123(String keuze1, String keuze2, String keuze3, String studentMail) {
         Subject s1 = subjectRepository.findByName(keuze1);
+        s1.setGekozen(s1.getGekozen()+1);
+
         Subject s2 = subjectRepository.findByName(keuze2);
+        s2.setGekozen(s1.getGekozen()+1);
+
         Subject s3 = subjectRepository.findByName(keuze3);
+        s3.setGekozen(s1.getGekozen()+1);
+
 
         User u = userRepository.findByEmail(studentMail);
         u.setKeuze1(s1);
@@ -221,7 +227,7 @@ public class UserService {
         u.setKeuze3(s3);
     }
 
-    public Integer getStudCount(@RequestParam String subjectName){
+    public Integer getStudCount(String subjectName){
         Subject s = subjectRepository.findByName(subjectName);
         List<User> users = userRepository.findAll();
         Integer count = 0;
@@ -235,4 +241,51 @@ public class UserService {
         }
         return count;
     }
+
+
+
+
+    public Map<Integer, User> getBoostedStudCoord(String subjectName){
+        Subject s = subjectRepository.findByName(subjectName);
+        List<User> users = userRepository.findAll();
+        Map<Integer, User> userMetKeuze = new HashMap<>();
+        for(int i = 0; i < users.size(); i ++){
+            if(users.get(i).getGeboostVoor().contains(s)) {
+                if (s == users.get(i).getKeuze1()) {
+                    userMetKeuze.put(1, users.get(i));
+                } else if (s == users.get(i).getKeuze2()) {
+                    userMetKeuze.put(2, users.get(i));
+                } else if (s == users.get(i).getKeuze3()) {
+                    userMetKeuze.put(3, users.get(i));
+                }
+            }
+        }
+        return userMetKeuze;
+    }
+
+
+
+    public Map<Integer, User> getNONBoostedStudCoord(String subjectName){
+        Subject s = subjectRepository.findByName(subjectName);
+        List<User> users = userRepository.findAll();
+        Map<Integer, User> userMetKeuze = new HashMap<>();
+        for(int i = 0; i < users.size(); i ++){
+            if(!users.get(i).getGeboostVoor().contains(s)) {
+                if (s == users.get(i).getKeuze1()) {
+                    userMetKeuze.put(1, users.get(i));
+                } else if (s == users.get(i).getKeuze2()) {
+                    userMetKeuze.put(2, users.get(i));
+                } else if (s == users.get(i).getKeuze3()) {
+                    userMetKeuze.put(3, users.get(i));
+                }
+            }
+        }
+        return userMetKeuze;
+    }
+
+
+
+
+
+
 }
