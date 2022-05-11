@@ -4,6 +4,7 @@ import com.example.demo.checks.EmailExists;
 import com.example.demo.controller.UserController;
 import com.example.demo.models.*;
 import com.example.demo.repository.*;
+import com.example.demo.service.SubjectService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +26,7 @@ public class MainConfig {
                                          OpleidingsRepository opleidingsRepository,
                                          RoleRepository roleRepository,
                                          SubjectRepository subjectRepository,
-                                         UserController userController) {
+                                         UserController userController, SubjectService subjectService) {
         return args -> {
 
             Role studentRole = new Role("ROLE_STUDENT");
@@ -43,10 +44,14 @@ public class MainConfig {
             User dwight = new User("dwight","dwight@gmail.com","wachtwoord");
             User Kanye = new User("Kanye","mrwest@gmail.com","wachtwoord");
             User djef = new User("djef","djef@gmail.com","wachtwoord");
-
             User maxou = new User("maxou","maxou@gmail.com","wachtwoord");
             User toon = new User("toon","toon@gmail.com","wachtwoord");
             User matthieu = new User("matthieu","matthieu@gmail.com","wachtwoord");
+            User dirk = new User("dirk","dirk@gmail.com","wachtwoord");
+
+
+
+
 
             BJ.setRoles(Arrays.asList(roleRepository.findByName("ROLE_STUDENT")));
             maxou.setRoles(Arrays.asList(roleRepository.findByName("ROLE_STUDENT")));
@@ -58,6 +63,7 @@ public class MainConfig {
             kurt.setRoles(Arrays.asList(roleRepository.findByName("ROLE_BEDRIJF")));
             Kanye.setRoles(Arrays.asList(roleRepository.findByName("ROLE_COORDINATOR")));
             djef.setRoles(Arrays.asList(roleRepository.findByName("ROLE_PROMOTOR")));
+            dirk.setRoles(Arrays.asList(roleRepository.findByName("ROLE_PROMOTOR")));
 
 
             Opleiding elict = new Opleiding("ELICT");
@@ -115,6 +121,9 @@ public class MainConfig {
             dwight.setSubject(subjectRepository.findByName("nog niet beslist"));
             Kanye.setSubject(subjectRepository.findByName("nog niet beslist"));
             djef.setSubject(subjectRepository.findByName("nog niet beslist"));
+            dirk.setSubject(subjectRepository.findByName("nog niet beslist"));
+
+
 
 
             BJ.setOpleiding(opleidingsRepository.findByName("ELICT"));
@@ -127,7 +136,7 @@ public class MainConfig {
             toon.setOpleiding(opleidingsRepository.findByName("Nederlands"));
             matthieu.setOpleiding(opleidingsRepository.findByName("Nederlands"));
             djef.setOpleiding(opleidingsRepository.findByName("Nederlands"));
-
+            dirk.setOpleiding(opleidingsRepository.findByName("Nederlands"));
 
             BJ.setCampus(campusRepository.findByName("Gent"));
             maxou.setCampus(campusRepository.findByName("Gent"));
@@ -139,6 +148,7 @@ public class MainConfig {
             dwight.setCampus(campusRepository.findByName("Gent"));
             Kanye.setCampus(campusRepository.findByName("Gent"));
             djef.setCampus(campusRepository.findByName("Gent"));
+            dirk.setCampus(campusRepository.findByName("Aalst"));
 
 
             BJ.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
@@ -151,7 +161,7 @@ public class MainConfig {
             dwight.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
             Kanye.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
             djef.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
-
+            dirk.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
 
 
 
@@ -179,26 +189,25 @@ public class MainConfig {
             dinos.setKeuze2(subjectRepository.findByName("nog niet beslist"));
             dinos.setKeuze3(subjectRepository.findByName("nog niet beslist"));
 
-
             kurt.setKeuze1(subjectRepository.findByName("nog niet beslist"));
             kurt.setKeuze2(subjectRepository.findByName("nog niet beslist"));
             kurt.setKeuze3(subjectRepository.findByName("nog niet beslist"));
-
 
             dwight.setKeuze1(subjectRepository.findByName("nog niet beslist"));
             dwight.setKeuze2(subjectRepository.findByName("nog niet beslist"));
             dwight.setKeuze3(subjectRepository.findByName("nog niet beslist"));
 
-
             Kanye.setKeuze1(subjectRepository.findByName("nog niet beslist"));
             Kanye.setKeuze2(subjectRepository.findByName("nog niet beslist"));
             Kanye.setKeuze3(subjectRepository.findByName("nog niet beslist"));
-
 
             djef.setKeuze1(subjectRepository.findByName("nog niet beslist"));
             djef.setKeuze2(subjectRepository.findByName("nog niet beslist"));
             djef.setKeuze3(subjectRepository.findByName("nog niet beslist"));
 
+            dirk.setKeuze1(subjectRepository.findByName("nog niet beslist"));
+            dirk.setKeuze2(subjectRepository.findByName("nog niet beslist"));
+            dirk.setKeuze3(subjectRepository.findByName("nog niet beslist"));
 
 
             try {
@@ -251,6 +260,14 @@ public class MainConfig {
             } catch (EmailExists e) {
                 e.printStackTrace();
             }
+
+
+
+            //promotor enkel bij richting van onderwerp te zien!!!!!!!!!!!
+            subjectService.changePromotor("zinsbouw", "djef@gmail.com");
+            subjectService.changePromotor("zinnen", "djef@gmail.com");
+            subjectService.changePromotor("werkwoorden", "djef@gmail.com");
+
 
 
         };
