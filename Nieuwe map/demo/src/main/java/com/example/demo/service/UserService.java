@@ -220,4 +220,19 @@ public class UserService {
         u.setKeuze2(s2);
         u.setKeuze3(s3);
     }
+
+    public Integer getStudCount(@RequestParam String subjectName){
+        Subject s = subjectRepository.findByName(subjectName);
+        List<User> users = userRepository.findAll();
+        Integer count = 0;
+
+        for(int i = 0; i < users.size(); i ++){
+            if(s == users.get(i).getKeuze1() ||
+                    s == users.get(i).getKeuze2() ||
+                    s == users.get(i).getKeuze3() ) {
+                count++;
+            }
+        }
+        return count;
+    }
 }
