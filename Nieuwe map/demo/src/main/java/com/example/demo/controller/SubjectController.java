@@ -86,12 +86,16 @@ public class SubjectController {
     }
 
 
+
     //per promotor alle subjects
     @GetMapping(value = "/subjectsprom")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public List<Subject> getSperPro(@RequestParam String mail) {
         return subjectService.getSperPro(mail);
     }
+
+
+
 
     @GetMapping(value = "/targetsubjects")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")

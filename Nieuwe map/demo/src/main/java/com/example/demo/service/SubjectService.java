@@ -101,6 +101,8 @@ public class SubjectService {
     }
 
 
+
+
     //subject per promotor
     public List<Subject> getSperPro(String mail){
         User promotor = userRepository.findByEmail(mail);
@@ -113,6 +115,9 @@ public class SubjectService {
         }
         return perPromotor;
     }
+
+
+
 
     public List<Subject> getTargetSubjects(String mail){
         User u = userRepository.findByEmail(mail);
