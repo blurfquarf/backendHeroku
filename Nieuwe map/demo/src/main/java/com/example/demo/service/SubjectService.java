@@ -29,7 +29,15 @@ public class SubjectService {
     }
 
     public List<Subject> getSubjects() {
-        return subjectRepository.findAll();
+        List<Subject> all = subjectRepository.findAll();
+        List<Subject> correct = new ArrayList<>();
+
+        for(int i = 0; i < all.size(); i++){
+            if (!all.get(i).getNietMeerBeschikbaar())  {
+                correct.add(all.get(i));
+            }
+        }
+        return correct;
     }
 
     public void addNewSubject(Subject subject) {
@@ -92,6 +100,8 @@ public class SubjectService {
         return u.getKeuze3();
     }
 
+
+    //subject per promotor
     public List<Subject> getSperPro(String mail){
         User promotor = userRepository.findByEmail(mail);
         List<Subject> subs = subjectRepository.findAll();
@@ -112,7 +122,7 @@ public class SubjectService {
         for (int i = 0; i < allSubjects.size(); i ++){
             if (allSubjects.get(i).getOpleidingen().contains(u.getOpleiding()) &&
                     allSubjects.get(i).getCampussen().contains(u.getCampus()) &&
-                    allSubjects.get(i).getNietMeerBeschikbaar() == false
+                    !allSubjects.get(i).getNietMeerBeschikbaar()
             ){
                 resultList.add(allSubjects.get(i));
             }

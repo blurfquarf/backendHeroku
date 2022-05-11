@@ -151,6 +151,7 @@ public class UserService {
         u.setKeuze3(s);
     }
 
+    //student per subject met keuznr
     public Map<Integer, User> getSperSub(String subjectName){
         Subject s = subjectRepository.findByName(subjectName);
         List<User> users = userRepository.findAll();
@@ -188,7 +189,7 @@ public class UserService {
         List<Subject> all = subjectRepository.findAll();
         for(int i = 0; i < all.size(); i++){
             if (all.get(i).getOpleidingen().contains(u.getOpleiding()) && all.get(i).getCampussen().contains(u.getCampus())
-            && all.get(i).getNietMeerBeschikbaar() == false){
+            && !all.get(i).getNietMeerBeschikbaar()){
                 targetSubjects.add(all.get(i));
             }
         }
@@ -218,7 +219,5 @@ public class UserService {
         u.setKeuze1(s1);
         u.setKeuze2(s2);
         u.setKeuze3(s3);
-
     }
-
 }
