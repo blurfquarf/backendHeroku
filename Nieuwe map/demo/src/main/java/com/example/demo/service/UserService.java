@@ -220,10 +220,10 @@ public class UserService {
         s1.setGekozen(s1.getGekozen()+1);
 
         Subject s2 = subjectRepository.findByName(keuze2);
-        s2.setGekozen(s1.getGekozen()+1);
+        s2.setGekozen(s2.getGekozen()+1);
 
         Subject s3 = subjectRepository.findByName(keuze3);
-        s3.setGekozen(s1.getGekozen()+1);
+        s3.setGekozen(s3.getGekozen()+1);
 
 
         User u = userRepository.findByEmail(studentMail);
