@@ -20,11 +20,18 @@ public class SubjectController {
         this.subjectService = subjectService;
     }
 
+
+
+
     @CrossOrigin(origins = "https://localhost:3000")
     @GetMapping
     public List<Subject> getSubject(){
-        return subjectService.getSubjects();
+        return subjectService.getPromSubjects();
     }
+
+
+
+
 
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     @PostMapping
@@ -135,5 +142,13 @@ public class SubjectController {
     public List<Subject> getBedrijfSubjects(@RequestParam String mail){
         return subjectService.getBedrijfSubjects(mail);
     }
+
+
+    @GetMapping(value = "/noproforu")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
+    public List<Subject> getNoPromSubjects(){
+        return subjectService.getNoPromSubjects();
+    }
+
 
 }

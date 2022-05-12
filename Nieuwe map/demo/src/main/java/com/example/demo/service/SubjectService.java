@@ -35,17 +35,48 @@ public class SubjectService {
         this.roleRepository = roleRepository;
     }
 
-    public List<Subject> getSubjects() {
+
+
+
+
+
+    //enkel voor coordinator
+    public List<Subject> getPromSubjects() {
         List<Subject> all = subjectRepository.findAll();
         List<Subject> correct = new ArrayList<>();
 
         for(int i = 0; i < all.size(); i++){
-            if (!all.get(i).getNietMeerBeschikbaar())  {
+            if (!all.get(i).getNietMeerBeschikbaar() && !all.get(i).getReedsGoedgekeurd() &&
+                    all.get(i).getPromotor() != null
+            )  {
                 correct.add(all.get(i));
             }
         }
         return correct;
     }
+
+
+
+    //enkel voor coordinator
+    public List<Subject> getNoPromSubjects() {
+        List<Subject> all = subjectRepository.findAll();
+        List<Subject> correct = new ArrayList<>();
+
+        for(int i = 0; i < all.size(); i++){
+            if (!all.get(i).getNietMeerBeschikbaar() && !all.get(i).getReedsGoedgekeurd() &&
+                    all.get(i).getPromotor() == null
+            )  {
+                correct.add(all.get(i));
+            }
+        }
+        return correct;
+    }
+
+
+
+
+
+
 
     public void addNewSubject(Subject subject) {
         subjectRepository.save(subject);
