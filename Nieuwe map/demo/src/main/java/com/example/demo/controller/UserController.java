@@ -160,7 +160,7 @@ public class UserController {
 
 
     //alle opleidingen
-    @GetMapping(value = "/opeidingen")
+    @GetMapping(value = "/opleidingen")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public List<Opleiding> getOpleidingen() {
         return userService.getOpleidingen();
