@@ -25,7 +25,7 @@ public class SubjectController {
 
     @CrossOrigin(origins = "https://localhost:3000")
     @GetMapping(value = "/prosub")
-    public List<Subject> getmetProSubject(String mail){
+    public List<Subject> getmetProSubject(@RequestParam String mail){
         return subjectService.getPromSubjects(mail);
     }
 
@@ -45,11 +45,15 @@ public class SubjectController {
         subjectService.deleteSubject(subjectId);
     }
 
+
+
     @PostMapping("/pro")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public void promotor(@RequestParam String subjectName, @RequestParam String mail){
         subjectService.changePromotor(subjectName, mail);
     }
+
+
 
     @PostMapping("/copro")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
@@ -146,7 +150,7 @@ public class SubjectController {
 
     @GetMapping(value = "/noproforu")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
-    public List<Subject> getNoPromSubjects(String mail){
+    public List<Subject> getNoPromSubjects(@RequestParam String mail){
         return subjectService.getNoPromSubjects(mail);
     }
 
