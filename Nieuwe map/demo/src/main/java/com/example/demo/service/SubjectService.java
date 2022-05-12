@@ -127,7 +127,7 @@ public class SubjectService {
         for (int i = 0; i < allSubjects.size(); i ++){
             if (allSubjects.get(i).getOpleidingen().contains(u.getOpleiding()) &&
                     allSubjects.get(i).getCampussen().contains(u.getCampus()) &&
-                    !allSubjects.get(i).getNietMeerBeschikbaar()
+                    !allSubjects.get(i).getNietMeerBeschikbaar() && allSubjects.get(i).getApproved()
             ){
                 resultList.add(allSubjects.get(i));
             }
@@ -155,5 +155,8 @@ public class SubjectService {
     }
 
 
-
+    public Subject getSubject(String subjectName) {
+        Subject s = subjectRepository.findByName(subjectName);
+        return s;
+    }
 }
