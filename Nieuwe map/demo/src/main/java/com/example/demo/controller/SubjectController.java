@@ -117,8 +117,19 @@ public class SubjectController {
     @GetMapping(value = "/subjectdetails")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public Subject getOneSubject(@RequestParam String subjectName){
-        return subjectService.getSubject(subjectName);
+        return subjectService.getOneSubject(subjectName);
     }
+
+
+
+
+    @GetMapping(value = "/bedrijven")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
+    public List<User> getBedrijven(){
+        return subjectService.getBedrijven();
+    }
+
+
 
 
 }

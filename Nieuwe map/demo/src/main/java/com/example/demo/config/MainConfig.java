@@ -43,7 +43,7 @@ public class MainConfig {
             User BJ = new User("BerendJaap","berend@gmail.com","wachtwoord");
             User geert = new User("GeertGoossens","geert@gmail.com","wachtwoord");
             User dinos = new User("dinodelarue","dino@gmail.com","wachtwoord");
-            User kurt = new User("kurt","kurt@gmail.com","wachtwoord");
+            User kurt = new User("AB Inbev","kurt@gmail.com","wachtwoord");
             User dwight = new User("dwight","dwight@gmail.com","wachtwoord");
             User Kanye = new User("Kanye","mrwest@gmail.com","wachtwoord");
             User djef = new User("Jef De Bakker","djef@gmail.com","wachtwoord");

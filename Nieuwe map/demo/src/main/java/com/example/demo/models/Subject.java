@@ -27,7 +27,19 @@ public class Subject {
 
     private boolean reedsGoedgekeurd;
 
-    private String bedrijf;
+
+
+    public void setBedrijf(User bedrijf) {
+        this.bedrijf = bedrijf;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "bedrijf_id")
+    private User bedrijf;
+
+
+
+
 
 
     private Integer gekozen = 0;
@@ -118,6 +130,10 @@ public class Subject {
     private User promotor;
     private boolean approved;
 
+    public User getBedrijf() {
+        return bedrijf;
+    }
+
     public Subject(String n) {
         name = n;
     }
@@ -130,7 +146,7 @@ public class Subject {
     }
 
     public Subject(String name, String description,
-                   List<Campus> campussen, List<User> copromotoren, String bedrijf,
+                   List<Campus> campussen, List<User> copromotoren, User bedrijf,
                    User promotor) {
         this.name = name;
         this.description = description;

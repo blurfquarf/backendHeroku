@@ -21,11 +21,15 @@ public class SubjectService {
     private UserRepository userRepository;
     private CampusRepository campusRepository;
 
+    private RoleRepository roleRepository;
+
     @Autowired
-    public SubjectService(SubjectRepository subjectRepository, UserRepository userRepository, CampusRepository campusRepository) {
+    public SubjectService(SubjectRepository subjectRepository, UserRepository userRepository,
+                          CampusRepository campusRepository, RoleRepository roleRepository) {
         this.subjectRepository = subjectRepository;
         this.userRepository = userRepository;
         this.campusRepository = campusRepository;
+        this.roleRepository = roleRepository;
     }
 
     public List<Subject> getSubjects() {
@@ -155,8 +159,20 @@ public class SubjectService {
     }
 
 
-    public Subject getSubject(String subjectName) {
+    public Subject getOneSubject(String subjectName) {
         Subject s = subjectRepository.findByName(subjectName);
         return s;
+    }
+
+    public List<User> getBedrijven() {
+        List<User> all = userRepository.findAll();
+        Role bedrijf = roleRepository.findByName("ROLE_BEDRIJF");
+        List<User> correct = new ArrayList<>();
+        for(int i = 0; i < all.size(); i++){
+            if (all.get(i).getRoles().contains(bedrijf)){
+                correct.add(all.get(i));
+            }
+        }
+        return correct;
     }
 }
