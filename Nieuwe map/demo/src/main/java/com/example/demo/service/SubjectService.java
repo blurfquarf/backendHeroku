@@ -41,15 +41,17 @@ public class SubjectService {
 
 
     //enkel voor coordinator
-    public List<Subject> getPromSubjects() {
+    public List<Subject> getPromSubjects(String mail) {
         List<Subject> all = subjectRepository.findAll();
         List<Subject> correct = new ArrayList<>();
+        User c = userRepository.findByEmail(mail);
 
         for(int i = 0; i < all.size(); i++){
-            if (!all.get(i).getNietMeerBeschikbaar() && !all.get(i).getReedsGoedgekeurd() &&
-                    all.get(i).getPromotor() != null
-            )  {
-                correct.add(all.get(i));
+            if(all.get(i).getCampussen().contains(c.getCampus()) && all.get(i).getOpleidingen().contains(c.getOpleiding())) {
+                if (!all.get(i).getNietMeerBeschikbaar() && !all.get(i).getReedsGoedgekeurd() &&
+                        all.get(i).getPromotor() != null) {
+                    correct.add(all.get(i));
+                }
             }
         }
         return correct;
@@ -58,15 +60,17 @@ public class SubjectService {
 
 
     //enkel voor coordinator
-    public List<Subject> getNoPromSubjects() {
+    public List<Subject> getNoPromSubjects(String mail) {
         List<Subject> all = subjectRepository.findAll();
         List<Subject> correct = new ArrayList<>();
+        User c = userRepository.findByEmail(mail);
 
         for(int i = 0; i < all.size(); i++){
-            if (!all.get(i).getNietMeerBeschikbaar() && !all.get(i).getReedsGoedgekeurd() &&
-                    all.get(i).getPromotor() == null
-            )  {
-                correct.add(all.get(i));
+            if(all.get(i).getCampussen().contains(c.getCampus()) && all.get(i).getOpleidingen().contains(c.getOpleiding())) {
+                if (!all.get(i).getNietMeerBeschikbaar() && !all.get(i).getReedsGoedgekeurd() &&
+                        all.get(i).getPromotor() == null) {
+                    correct.add(all.get(i));
+                }
             }
         }
         return correct;

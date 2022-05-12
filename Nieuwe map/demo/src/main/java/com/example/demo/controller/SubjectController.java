@@ -24,9 +24,9 @@ public class SubjectController {
 
 
     @CrossOrigin(origins = "https://localhost:3000")
-    @GetMapping
-    public List<Subject> getSubject(){
-        return subjectService.getPromSubjects();
+    @GetMapping(value = "/prosub")
+    public List<Subject> getmetProSubject(String mail){
+        return subjectService.getPromSubjects(mail);
     }
 
 
@@ -146,8 +146,8 @@ public class SubjectController {
 
     @GetMapping(value = "/noproforu")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
-    public List<Subject> getNoPromSubjects(){
-        return subjectService.getNoPromSubjects();
+    public List<Subject> getNoPromSubjects(String mail){
+        return subjectService.getNoPromSubjects(mail);
     }
 
 
