@@ -116,7 +116,8 @@ public class SubjectService {
         List<Subject> subs = subjectRepository.findAll();
         List<Subject> perPromotor = new ArrayList<>();
         for(int i = 0; i < subs.size(); i ++){
-            if(subs.get(i).getPromotor() == promotor && !subs.get(i).getNietMeerBeschikbaar()){
+            if(subs.get(i).getPromotor() == promotor && !subs.get(i).getNietMeerBeschikbaar()
+            && subs.get(i).getApproved()){
                 perPromotor.add(subs.get(i));
             }
         }

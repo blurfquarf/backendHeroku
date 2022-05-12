@@ -129,7 +129,7 @@ public class MainConfig {
             taartenBakken.setReedsGoedgekeurd();
             //dinoos.setReedsGoedgekeurd();
             n1.setReedsGoedgekeurd();
-            n2.setReedsGoedgekeurd();
+            //n2.setReedsGoedgekeurd();
             n3.setReedsGoedgekeurd();
             zorak.setReedsGoedgekeurd();
 
