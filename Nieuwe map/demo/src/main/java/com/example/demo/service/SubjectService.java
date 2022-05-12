@@ -159,9 +159,11 @@ public class SubjectService {
     }
 
 
-    public Subject getOneSubject(String subjectName) {
+    public List<Subject> getOneSubject(String subjectName) {
         Subject s = subjectRepository.findByName(subjectName);
-        return s;
+        List<Subject> subject = new ArrayList<>();
+        subject.add(s);
+        return subject;
     }
 
     public List<User> getBedrijven() {
