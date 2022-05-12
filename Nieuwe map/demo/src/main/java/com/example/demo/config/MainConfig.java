@@ -50,7 +50,7 @@ public class MainConfig {
             User maxou = new User("maxou","maxou@gmail.com","wachtwoord");
             User toon = new User("toon","toon@gmail.com","wachtwoord");
             User matthieu = new User("matthieu","matthieu@gmail.com","wachtwoord");
-            User dirk = new User("dirk","dirk@gmail.com","wachtwoord");
+            User dirk = new User("Dirk Vanmaldeghem","dirk@gmail.com","wachtwoord");
 
             User zorakthegreat = new User("zorak","zorak@gmail.com","wachtwoord");
 
@@ -81,8 +81,6 @@ public class MainConfig {
 
             zorakthegreat.setRoles(Arrays.asList(roleRepository.findByName("ROLE_STUDENT")));
 
-
-
             Opleiding elict = new Opleiding("ELICT");
             Opleiding ned = new Opleiding("EM");
             opleidingsRepository.saveAll(List.of(elict, ned));
@@ -94,7 +92,7 @@ public class MainConfig {
 
 
 
-            Subject taartenBakken = new Subject("Taarten bakken", "sssss", true);
+            Subject taartenBakken = new Subject("Taarten bakken", "Droom jij ook over taarten? Kijk niet verder, dit is het onderwerp voor jou!", true);
             Subject nanobots = new Subject("fortnite", "DIKKE PARTY BIJ DE BATTLEBUS!", false);
             Subject dinoos = new Subject("nog niet beslist", "ok dit is cool", false);
             Subject n1 = new Subject("zinsbouw", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", true);
@@ -133,7 +131,7 @@ public class MainConfig {
 
             dinoos.setCampussen(Arrays.asList(campusRepository.findByName("Gent")));
             nanobots.setCampussen(Arrays.asList(campusRepository.findByName("Gent")));
-            taartenBakken.setCampussen(Arrays.asList(campusRepository.findByName("Brugge")));
+            taartenBakken.setCampussen(Arrays.asList(campusRepository.findByName("Gent")));
             n1.setCampussen(Arrays.asList(campusRepository.findByName("Gent")));
             n2.setCampussen(Arrays.asList(campusRepository.findByName("Gent")));
             n3.setCampussen(Arrays.asList(campusRepository.findByName("Gent")));
@@ -366,6 +364,11 @@ public class MainConfig {
             } catch (EmailExists e) {
                 e.printStackTrace();
             }
+            try {
+                userController.addNewPerson(dirk);
+            } catch (EmailExists e) {
+                e.printStackTrace();
+            }
 
             //promotor enkel bij richting van onderwerp te zien!!!!!!!!!!!
             subjectService.changePromotor("zinsbouw", "djef@gmail.com");
@@ -373,6 +376,9 @@ public class MainConfig {
             subjectService.changePromotor("werkwoorden", "djef@gmail.com");
             subjectService.changePromotor("greatness", "geert@gmail.com");
 
+
+            subjectService.changePromotor("AI malware", "dirk@gmail.com");
+            subjectService.changePromotor("optimalisatiesoftware", "dirk@gmail.com");
 
             userService.setSubject("greatness", "zorak@gmail.com");
 
@@ -382,8 +388,6 @@ public class MainConfig {
             subjectService.setBedrijf("zinsbouw", "apple@gmail.com");
             subjectService.setBedrijf("werkwoorden","apple@gmail.com");
             subjectService.setBedrijf("fortnite","apple@gmail.com");
-
-
 
         };
     }

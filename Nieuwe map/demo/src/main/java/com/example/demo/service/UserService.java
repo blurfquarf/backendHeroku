@@ -257,6 +257,10 @@ public class UserService {
 
 
 
+/*
+
+
+
 
     public Map<Integer, User> getBoostedStudCoord(String subjectName){
         Subject s = subjectRepository.findByName(subjectName);
@@ -295,6 +299,12 @@ public class UserService {
         }
         return userMetKeuze;
     }
+
+*/
+
+
+
+
 
 
     public List<Opleiding> getOpleidingen() {

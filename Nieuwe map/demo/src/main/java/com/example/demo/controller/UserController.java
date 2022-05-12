@@ -66,7 +66,7 @@ public class UserController {
 
 
 
-
+/*
     //studenten per subject BOOSTED
     @GetMapping(value = "/boostedstud")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
@@ -79,7 +79,7 @@ public class UserController {
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public Map<Integer, User> getNONBoostedStudCoord(@RequestParam String subjectName) {
         return userService.getNONBoostedStudCoord(subjectName);
-    }
+    }*/
 
 
 
@@ -100,21 +100,12 @@ public class UserController {
         return userService.getSperSub(subjectName);
     }
 
-
-
-
-
     //aantal studenten per subject, voor promotoren
     @GetMapping(value = "/count")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public Integer getStudCount(@RequestParam String subjectName) {
         return userService.getStudCount(subjectName);
     }
-
-
-
-
-
 
     //campusGet
     @GetMapping(value = "/campus")
@@ -129,9 +120,6 @@ public class UserController {
     public Opleiding getOpleiding(@RequestParam String mail) {
         return userService.getOpleiding(mail);
     }
-
-
-
 
 
     //onderwerpen horend bij coordinator
@@ -155,8 +143,6 @@ public class UserController {
     public void boost(@RequestParam String subjectName, @RequestParam String studentMail){
         userService.setBoost(subjectName, studentMail);
     }
-
-
 
 
     //alle opleidingen
