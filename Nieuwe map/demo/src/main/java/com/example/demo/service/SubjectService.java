@@ -185,7 +185,7 @@ public class SubjectService {
         User bedrijf = userRepository.findByEmail(mail);
         List<Subject> correct = new ArrayList<>();
         for(int i = 0; i < all.size(); i++){
-            if (all.get(i).getBedrijf() == bedrijf && all.get(i).getNietMeerBeschikbaar() && all.get(i).getApproved()){
+            if (all.get(i).getBedrijf() == bedrijf && !all.get(i).getNietMeerBeschikbaar() && all.get(i).getApproved()){
                 correct.add(all.get(i));
             }
         }
