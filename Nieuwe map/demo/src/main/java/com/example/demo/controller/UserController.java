@@ -159,5 +159,16 @@ public class UserController {
 
 
 
+    //alle opleidingen
+    @GetMapping(value = "/opeidingen")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
+    public List<Opleiding> getOpleidingen() {
+        return userService.getOpleidingen();
+    }
+
+
+
+
+
 
 }

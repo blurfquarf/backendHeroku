@@ -24,9 +24,14 @@ public class UserService {
     private final SubjectRepository subjectRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository, SubjectRepository subjectRepository) {
+    private final OpleidingsRepository opleidingsRepository;
+
+    @Autowired
+    public UserService(UserRepository userRepository, SubjectRepository subjectRepository,
+                       OpleidingsRepository opleidingsRepository) {
         this.userRepository = userRepository;
         this.subjectRepository = subjectRepository;
+        this.opleidingsRepository = opleidingsRepository;
     }
 
     @Autowired
@@ -284,8 +289,8 @@ public class UserService {
     }
 
 
-
-
-
-
+    public List<Opleiding> getOpleidingen() {
+        List<Opleiding> opleidingen = opleidingsRepository.findAll();
+        return opleidingen;
+    }
 }

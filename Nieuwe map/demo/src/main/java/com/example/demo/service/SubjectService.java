@@ -17,10 +17,13 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:3000")
 public class SubjectService {
 
+    @Autowired
     private SubjectRepository subjectRepository;
+    @Autowired
     private UserRepository userRepository;
+    @Autowired
     private CampusRepository campusRepository;
-
+    @Autowired
     private RoleRepository roleRepository;
 
     @Autowired
@@ -191,6 +194,10 @@ public class SubjectService {
         }
         return correct;
     }
+
+
+
+
 
     public void setBedrijf(String subjectName, String mail) {
         Subject s = subjectRepository.findByName(subjectName);
