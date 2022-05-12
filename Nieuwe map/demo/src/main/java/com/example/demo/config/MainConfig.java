@@ -95,11 +95,11 @@ public class MainConfig {
 
 
             Subject taartenBakken = new Subject("Taarten bakken", "sssss", true);
-            Subject nanobots = new Subject("vroemvroem", "ok dit is cool", false);
+            Subject nanobots = new Subject("fortnite", "DIKKE PARTY BIJ DE BATTLEBUS!", false);
             Subject dinoos = new Subject("nog niet beslist", "ok dit is cool", false);
-            Subject n1 = new Subject("zinsbouw", "ok dit is cool", true);
-            Subject n2 = new Subject("zinnen", "ok dit is cool", true);
-            Subject n3 = new Subject("werkwoorden", "ok dit is cool", true);
+            Subject n1 = new Subject("zinsbouw", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", true);
+            Subject n2 = new Subject("zinnen", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", true);
+            Subject n3 = new Subject("werkwoorden", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", true);
 
 
             Subject zorak = new Subject("greatness", "Maxou Van Lauwe is definitie hiervoor", true);
@@ -381,7 +381,7 @@ public class MainConfig {
 
             subjectService.setBedrijf("zinsbouw", "apple@gmail.com");
             subjectService.setBedrijf("werkwoorden","apple@gmail.com");
-            subjectService.setBedrijf("vroemvroem","apple@gmail.com");
+            subjectService.setBedrijf("fortnite","apple@gmail.com");
 
 
 
