@@ -157,22 +157,30 @@ public class UserService {
     }
 
     //student per subject met keuznr
-    public Map<Integer, User> getSperSub(String subjectName){
+    public Map<Integer, List<User>> getSperSub(String subjectName){
         Subject s = subjectRepository.findByName(subjectName);
         List<User> users = userRepository.findAll();
-        Map<Integer, User> userMetKeuze = new HashMap<>();
+        Map<Integer, List<User>> userMetKeuze = new HashMap<>();
+
+        List<User> k1 = new ArrayList<>();
+        List<User> k2 = new ArrayList<>();
+        List<User> k3 = new ArrayList<>();
 
         for(int i = 0; i < users.size(); i ++){
             if(s == users.get(i).getKeuze1()) {
-                userMetKeuze.put(1, users.get(i));
+                k1.add(users.get(i));
             }
             else if(s == users.get(i).getKeuze2()) {
-                userMetKeuze.put(2, users.get(i));
+                k2.add(users.get(i));
             }
             else if(s == users.get(i).getKeuze3()) {
-                userMetKeuze.put(3, users.get(i));
+                k3.add(users.get(i));
             }
         }
+        userMetKeuze.put(1, k1);
+        userMetKeuze.put(2, k2);
+        userMetKeuze.put(3, k3);
+
         return userMetKeuze;
     }
 

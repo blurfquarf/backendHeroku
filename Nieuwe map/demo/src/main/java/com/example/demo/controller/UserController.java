@@ -96,7 +96,7 @@ public class UserController {
     //studenten per subject voor promotor
     @GetMapping(value = "/studentenpersubkeuze")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
-    public Map<Integer, User> getSperSub(@RequestParam String subjectName) {
+    public Map<Integer, List<User>> getSperSub(@RequestParam String subjectName) {
         return userService.getSperSub(subjectName);
     }
 
