@@ -3,6 +3,7 @@ package com.example.demo.models;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.*;
 
 @Entity
@@ -22,7 +23,12 @@ public class Subject {
     )
 
     private Long id;
+
+    @NotBlank
     private String name;
+
+
+    @NotBlank
     private String description;
 
     private boolean reedsGoedgekeurd;

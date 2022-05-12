@@ -84,7 +84,7 @@ public class MainConfig {
 
 
             Opleiding elict = new Opleiding("ELICT");
-            Opleiding ned = new Opleiding("Nederlands");
+            Opleiding ned = new Opleiding("EM");
             opleidingsRepository.saveAll(List.of(elict, ned));
 
             Campus G = new Campus("Gent");
@@ -105,14 +105,30 @@ public class MainConfig {
             Subject zorak = new Subject("greatness", "Maxou Van Lauwe is definitie hiervoor", true);
 
 
+
+            Subject terminals = new Subject("terminals", "de terminal is een en al epicness", false);
+            Subject robots = new Subject("AI malware", "dit is cool", true);
+            Subject optimalisatie = new Subject("optimalisatiesoftware", "ok dit is cool", true);
+
+
+
+
+
+
             dinoos.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("ELICT")));
-            nanobots.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("ELICT"), opleidingsRepository.findByName("Nederlands")));
-            taartenBakken.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("Nederlands")));
-            n1.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("Nederlands")));
-            n2.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("Nederlands")));
-            n3.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("Nederlands")));
+            nanobots.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("ELICT"), opleidingsRepository.findByName("EM")));
+            taartenBakken.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("EM")));
+            n1.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("EM")));
+            n2.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("EM")));
+            n3.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("EM")));
 
             zorak.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("ELICT")));
+
+
+            terminals.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("ELICT"), opleidingsRepository.findByName("EM")));
+            robots.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("ELICT"), opleidingsRepository.findByName("EM")));
+            optimalisatie.setOpleidingen(Arrays.asList(opleidingsRepository.findByName("ELICT"), opleidingsRepository.findByName("EM")));
+
 
 
             dinoos.setCampussen(Arrays.asList(campusRepository.findByName("Gent")));
@@ -124,8 +140,13 @@ public class MainConfig {
 
             zorak.setCampussen(Arrays.asList(campusRepository.findByName("Gent")));
 
+            terminals.setCampussen(Arrays.asList(campusRepository.findByName("Gent"), campusRepository.findByName("Brugge"), campusRepository.findByName("Aalst")));
+            robots.setCampussen(Arrays.asList(campusRepository.findByName("Gent"), campusRepository.findByName("Brugge"), campusRepository.findByName("Aalst")));
+            optimalisatie.setCampussen(Arrays.asList(campusRepository.findByName("Gent"), campusRepository.findByName("Brugge"), campusRepository.findByName("Aalst")));
 
 
+            robots.setReedsGoedgekeurd();
+            optimalisatie.setReedsGoedgekeurd();
             taartenBakken.setReedsGoedgekeurd();
             //dinoos.setReedsGoedgekeurd();
             n1.setReedsGoedgekeurd();
@@ -142,7 +163,7 @@ public class MainConfig {
             dinoos.setBedrijf(apple);*/
 
             repository.saveAll(
-                    List.of(taartenBakken, nanobots, dinoos, n1, n2, n3, zorak)
+                    List.of(taartenBakken, nanobots, dinoos, n1, n2, n3, zorak, terminals, robots, optimalisatie)
             );
 
 
@@ -171,12 +192,12 @@ public class MainConfig {
             dinos.setOpleiding(opleidingsRepository.findByName("ELICT"));
             kurt.setOpleiding(opleidingsRepository.findByName("ELICT"));
             dwight.setOpleiding(opleidingsRepository.findByName("ELICT"));
-            Kanye.setOpleiding(opleidingsRepository.findByName("Nederlands"));
-            maxou.setOpleiding(opleidingsRepository.findByName("Nederlands"));
-            toon.setOpleiding(opleidingsRepository.findByName("Nederlands"));
-            matthieu.setOpleiding(opleidingsRepository.findByName("Nederlands"));
-            djef.setOpleiding(opleidingsRepository.findByName("Nederlands"));
-            dirk.setOpleiding(opleidingsRepository.findByName("Nederlands"));
+            Kanye.setOpleiding(opleidingsRepository.findByName("EM"));
+            maxou.setOpleiding(opleidingsRepository.findByName("EM"));
+            toon.setOpleiding(opleidingsRepository.findByName("EM"));
+            matthieu.setOpleiding(opleidingsRepository.findByName("EM"));
+            djef.setOpleiding(opleidingsRepository.findByName("EM"));
+            dirk.setOpleiding(opleidingsRepository.findByName("EM"));
 
             zorakthegreat.setOpleiding(opleidingsRepository.findByName("ELICT"));
 
