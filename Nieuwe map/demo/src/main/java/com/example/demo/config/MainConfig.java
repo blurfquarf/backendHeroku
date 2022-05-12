@@ -73,6 +73,7 @@ public class MainConfig {
             Kanye.setRoles(Arrays.asList(roleRepository.findByName("ROLE_COORDINATOR")));
             djef.setRoles(Arrays.asList(roleRepository.findByName("ROLE_PROMOTOR")));
             dirk.setRoles(Arrays.asList(roleRepository.findByName("ROLE_PROMOTOR")));
+
             shady.setRoles(Arrays.asList(roleRepository.findByName("ROLE_PROMOTOR")));
             apple.setRoles(Arrays.asList(roleRepository.findByName("ROLE_PROMOTOR")));
 
@@ -132,7 +133,13 @@ public class MainConfig {
             n3.setReedsGoedgekeurd();
             zorak.setReedsGoedgekeurd();
 
-            taartenBakken.setBedrijf(apple);
+        /*  taartenBakken.setBedrijf(apple);
+            nanobots.setBedrijf(apple);
+            n1.setBedrijf(apple);
+            n2.setBedrijf(apple);
+            n3.setBedrijf(apple);
+            zorak.setBedrijf(apple);
+            dinoos.setBedrijf(apple);*/
 
             repository.saveAll(
                     List.of(taartenBakken, nanobots, dinoos, n1, n2, n3, zorak)
@@ -172,6 +179,7 @@ public class MainConfig {
             dirk.setOpleiding(opleidingsRepository.findByName("Nederlands"));
 
             zorakthegreat.setOpleiding(opleidingsRepository.findByName("ELICT"));
+
             apple.setOpleiding(opleidingsRepository.findByName("ELICT"));
             shady.setOpleiding(opleidingsRepository.findByName("ELICT"));
 
@@ -189,6 +197,7 @@ public class MainConfig {
             djef.setCampus(campusRepository.findByName("Gent"));
             dirk.setCampus(campusRepository.findByName("Aalst"));
             zorakthegreat.setCampus(campusRepository.findByName("Gent"));
+
             apple.setCampus(campusRepository.findByName("Gent"));
             shady.setCampus(campusRepository.findByName("Gent"));
 
@@ -204,6 +213,7 @@ public class MainConfig {
             Kanye.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
             djef.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
             dirk.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
+
             apple.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
             shady.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
 
@@ -347,6 +357,9 @@ public class MainConfig {
 
             subjectService.verhooggekozen("greatness");
 
+
+            subjectService.setBedrijf("zinsbouw", "apple@gmail.com");
+            subjectService.setBedrijf("werkwoorden","apple@gmail.com");
 
 
         };

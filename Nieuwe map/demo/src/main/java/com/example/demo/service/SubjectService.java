@@ -191,4 +191,12 @@ public class SubjectService {
         }
         return correct;
     }
+
+    public void setBedrijf(String subjectName, String mail) {
+        Subject s = subjectRepository.findByName(subjectName);
+        User b = userRepository.findByEmail(mail);
+        s.setBedrijf(b);
+    }
+
+
 }
