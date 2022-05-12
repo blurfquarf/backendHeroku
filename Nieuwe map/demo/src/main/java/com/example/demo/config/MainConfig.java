@@ -74,8 +74,8 @@ public class MainConfig {
             djef.setRoles(Arrays.asList(roleRepository.findByName("ROLE_PROMOTOR")));
             dirk.setRoles(Arrays.asList(roleRepository.findByName("ROLE_PROMOTOR")));
 
-            shady.setRoles(Arrays.asList(roleRepository.findByName("ROLE_PROMOTOR")));
-            apple.setRoles(Arrays.asList(roleRepository.findByName("ROLE_PROMOTOR")));
+            shady.setRoles(Arrays.asList(roleRepository.findByName("ROLE_BEDRIJF")));
+            apple.setRoles(Arrays.asList(roleRepository.findByName("ROLE_BEDRIJF")));
 
 
 
@@ -360,6 +360,8 @@ public class MainConfig {
 
             subjectService.setBedrijf("zinsbouw", "apple@gmail.com");
             subjectService.setBedrijf("werkwoorden","apple@gmail.com");
+            subjectService.setBedrijf("vroemvroem","apple@gmail.com");
+
 
 
         };
