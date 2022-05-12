@@ -116,8 +116,6 @@ public class Subject {
     }
 
 
-
-
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "copromotor_subj",
             joinColumns = @JoinColumn(name = "subject_id"),

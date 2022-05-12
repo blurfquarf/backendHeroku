@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.models.*;
 import com.example.demo.service.*;
+import org.hibernate.boot.jaxb.hbm.spi.SubEntityInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -120,13 +121,20 @@ public class SubjectController {
         return subjectService.getOneSubject(subjectName);
     }
 
-
-
-
     @GetMapping(value = "/bedrijven")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public List<User> getBedrijven(){
         return subjectService.getBedrijven();
+    }
+
+
+
+
+    //onderwerpen voor 1 bedrijf
+    @GetMapping(value = "/onderwerpperbedrijf")
+    @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
+    public List<Subject> getBedrijfSubjects(String mail){
+        return subjectService.getBedrijfSubjects(mail);
     }
 
 

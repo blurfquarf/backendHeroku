@@ -177,4 +177,18 @@ public class SubjectService {
         }
         return correct;
     }
+
+
+
+    public List<Subject> getBedrijfSubjects(String mail) {
+        List<Subject> all = subjectRepository.findAll();
+        User bedrijf = userRepository.findByEmail(mail);
+        List<Subject> correct = new ArrayList<>();
+        for(int i = 0; i < all.size(); i++){
+            if (all.get(i).getBedrijf() == bedrijf){
+                correct.add(all.get(i));
+            }
+        }
+        return correct;
+    }
 }
