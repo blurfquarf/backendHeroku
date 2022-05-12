@@ -103,6 +103,8 @@ public class SubjectController {
         return subjectService.getTargetSubjects(mail);
     }
 
+
+
     @GetMapping(value = "/boostperonderwerp")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
     public List<User> getBoosted(@RequestParam String subjectName){
@@ -114,12 +116,9 @@ public class SubjectController {
 
     @GetMapping(value = "/subjectdetails")
     @CrossOrigin(origins = "https://localhost:3000", allowedHeaders = "*")
-    public Subject getSubject(@RequestParam String subjectName){
+    public Subject getOneSubject(@RequestParam String subjectName){
         return subjectService.getSubject(subjectName);
     }
-
-
-
 
 
 }
