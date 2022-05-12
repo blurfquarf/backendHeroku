@@ -55,6 +55,12 @@ public class MainConfig {
             User zorakthegreat = new User("zorak","zorak@gmail.com","wachtwoord");
 
 
+            User apple = new User("apple","apple@gmail.com","wachtwoord");
+            User shady = new User("topbedrijf","topbedrijf@gmail.com","wachtwoord");
+
+
+
+
 
             BJ.setRoles(Arrays.asList(roleRepository.findByName("ROLE_STUDENT")));
             maxou.setRoles(Arrays.asList(roleRepository.findByName("ROLE_STUDENT")));
@@ -67,6 +73,8 @@ public class MainConfig {
             Kanye.setRoles(Arrays.asList(roleRepository.findByName("ROLE_COORDINATOR")));
             djef.setRoles(Arrays.asList(roleRepository.findByName("ROLE_PROMOTOR")));
             dirk.setRoles(Arrays.asList(roleRepository.findByName("ROLE_PROMOTOR")));
+            shady.setRoles(Arrays.asList(roleRepository.findByName("ROLE_PROMOTOR")));
+            apple.setRoles(Arrays.asList(roleRepository.findByName("ROLE_PROMOTOR")));
 
 
 
@@ -124,6 +132,8 @@ public class MainConfig {
             n3.setReedsGoedgekeurd();
             zorak.setReedsGoedgekeurd();
 
+            taartenBakken.setBedrijf(apple);
+
             repository.saveAll(
                     List.of(taartenBakken, nanobots, dinoos, n1, n2, n3, zorak)
             );
@@ -142,6 +152,9 @@ public class MainConfig {
             dirk.setSubject(subjectRepository.findByName("nog niet beslist"));
             zorakthegreat.setSubject(subjectRepository.findByName("nog niet beslist"));
 
+            apple.setSubject(subjectRepository.findByName("nog niet beslist"));
+            shady.setSubject(subjectRepository.findByName("nog niet beslist"));
+
 
 
 
@@ -159,6 +172,9 @@ public class MainConfig {
             dirk.setOpleiding(opleidingsRepository.findByName("Nederlands"));
 
             zorakthegreat.setOpleiding(opleidingsRepository.findByName("ELICT"));
+            apple.setOpleiding(opleidingsRepository.findByName("ELICT"));
+            shady.setOpleiding(opleidingsRepository.findByName("ELICT"));
+
 
 
             BJ.setCampus(campusRepository.findByName("Gent"));
@@ -173,6 +189,8 @@ public class MainConfig {
             djef.setCampus(campusRepository.findByName("Gent"));
             dirk.setCampus(campusRepository.findByName("Aalst"));
             zorakthegreat.setCampus(campusRepository.findByName("Gent"));
+            apple.setCampus(campusRepository.findByName("Gent"));
+            shady.setCampus(campusRepository.findByName("Gent"));
 
 
             BJ.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
@@ -186,6 +204,11 @@ public class MainConfig {
             Kanye.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
             djef.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
             dirk.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
+            apple.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
+            shady.setGeboostVoor(Arrays.asList(subjectRepository.findByName("nog niet beslist")));
+
+
+
 
             zorakthegreat.setGeboostVoor(Arrays.asList(subjectRepository.findByName("greatness")));
 
@@ -235,9 +258,16 @@ public class MainConfig {
             dirk.setKeuze3(subjectRepository.findByName("nog niet beslist"));
 
             zorakthegreat.setKeuze1(subjectRepository.findByName("greatness"));
-
             zorakthegreat.setKeuze2(subjectRepository.findByName("nog niet beslist"));
             zorakthegreat.setKeuze3(subjectRepository.findByName("nog niet beslist"));
+
+            apple.setKeuze1(subjectRepository.findByName("nog niet beslist"));
+            apple.setKeuze2(subjectRepository.findByName("nog niet beslist"));
+            apple.setKeuze3(subjectRepository.findByName("nog niet beslist"));
+
+            shady.setKeuze1(subjectRepository.findByName("nog niet beslist"));
+            shady.setKeuze2(subjectRepository.findByName("nog niet beslist"));
+            shady.setKeuze3(subjectRepository.findByName("nog niet beslist"));
 
 
             try {
@@ -292,6 +322,16 @@ public class MainConfig {
             }
             try {
                 userController.addNewPerson(zorakthegreat);
+            } catch (EmailExists e) {
+                e.printStackTrace();
+            }
+            try {
+                userController.addNewPerson(apple);
+            } catch (EmailExists e) {
+                e.printStackTrace();
+            }
+            try {
+                userController.addNewPerson(shady);
             } catch (EmailExists e) {
                 e.printStackTrace();
             }
