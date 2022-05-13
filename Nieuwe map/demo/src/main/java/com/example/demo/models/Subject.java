@@ -45,9 +45,6 @@ public class Subject {
 
 
 
-
-
-
     private Integer gekozen = 0;
 
     public Integer getGekozen() {
